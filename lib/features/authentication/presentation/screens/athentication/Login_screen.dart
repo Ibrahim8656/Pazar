@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_4/business%20logic/authentication/auth_cubit.dart';
-import 'package:flutter_application_4/business%20logic/authentication/auth_states.dart';
-import 'package:flutter_application_4/presentation/screens/HomeScreen.dart';
-import 'package:flutter_application_4/presentation/screens/athentication/Rigister.dart';
+import 'package:flutter_application_4/features/authentication/cubits/auth_cubit.dart';
+import 'package:flutter_application_4/features/authentication/cubits/auth_states.dart';
+import 'package:flutter_application_4/features/authentication/presentation/screens/HomeScreen.dart';
+import 'package:flutter_application_4/features/authentication/presentation/screens/athentication/Rigister.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter_application_4/data/Dio_helper/dio_helper.dart';
+import 'package:flutter_application_4/features/authentication/data/Dio_helper/dio_helper.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
           showSnackbar(context: context, message: state.Response.message!, color: Colors.green);
         }
         if(state is LoginwthierrorState){
-           showSnackbar(context: context, message: "Rowng Email or passowrd !", color: Colors.red);
+           showSnackbar(context: context, message: "Rowng Email or passowrd ! ", color: Colors.red);
         }
       },
       builder: (BuildContext context, AuthStates state) {
@@ -134,7 +134,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
 TextFormField Textformfild(String validatemessage, String hintText,
     TextEditingController controller, bool obscurstatus) {
   return TextFormField(

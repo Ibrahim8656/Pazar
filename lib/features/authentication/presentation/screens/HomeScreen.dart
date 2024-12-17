@@ -6,7 +6,8 @@ class Homescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("hello")),
+      appBar: AppBar(title: Text("Products"),),
+      body: Container(),
     );
   }
 }

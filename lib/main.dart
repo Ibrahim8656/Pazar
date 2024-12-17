@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_4/business%20logic/authentication/auth_cubit.dart';
-import 'package:flutter_application_4/data/Dio_helper/dio_helper.dart';
-import 'package:flutter_application_4/data/repository/authentication_repository.dart';
-import 'package:flutter_application_4/data/webservices/authentication/authetication_webservices.dart';
-import 'package:flutter_application_4/presentation/screens/athentication/Login_screen.dart';
+import 'package:flutter_application_4/features/authentication/cubits/auth_cubit.dart';
+import 'package:flutter_application_4/features/authentication/data/Dio_helper/dio_helper.dart';
+import 'package:flutter_application_4/features/authentication/data/repository/authentication_repository.dart';
+import 'package:flutter_application_4/features/authentication/data/webservices/authentication/authetication_webservices.dart';
+import 'package:flutter_application_4/features/authentication/presentation/screens/athentication/Login_screen.dart';
 import 'package:flutter_application_4/sheared/myobserver.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

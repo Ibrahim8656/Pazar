@@ -1,6 +1,6 @@
-import 'package:flutter_application_4/data/models/loginmodel.dart';
-import 'package:flutter_application_4/data/models/userRegister_model.dart';
-import 'package:flutter_application_4/data/webservices/authentication/authetication_webservices.dart';
+import 'package:flutter_application_4/features/authentication/data/models/loginmodel.dart';
+import 'package:flutter_application_4/features/authentication/data/models/userRegister_model.dart';
+import 'package:flutter_application_4/features/authentication/data/webservices/authentication/authetication_webservices.dart';
 
 class AuthenticationRepository {
   final AutheticationWebservices autheticationWebservices;

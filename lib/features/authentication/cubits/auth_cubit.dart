@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_application_4/business%20logic/authentication/auth_states.dart';
-import 'package:flutter_application_4/data/repository/authentication_repository.dart';
+import 'package:flutter_application_4/features/authentication/cubits/auth_states.dart';
+import 'package:flutter_application_4/features/authentication/data/repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthStates>{
