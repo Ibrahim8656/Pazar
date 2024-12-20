@@ -1,13 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/core/Helpers/shearedprefrences/shearedPrefrences.dart';
+import 'package:flutter_application_4/features/Home/presentation/home_screen.dart';
 import 'package:flutter_application_4/features/authentication/cubits/auth_cubit.dart';
 import 'package:flutter_application_4/features/authentication/cubits/auth_states.dart';
-import 'package:flutter_application_4/features/authentication/presentation/screens/HomeScreen.dart';
 import 'package:flutter_application_4/features/authentication/presentation/screens/athentication/Rigister.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter_application_4/features/authentication/data/Dio_helper/dio_helper.dart';
+import 'package:flutter_application_4/core/Helpers/Dio_helper/dio_helper.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -18,15 +19,17 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthStates>(
       listener: (BuildContext context, AuthStates state) {
-        if (state is LoginsuccessState) {
-          
-          Navigator.pushReplacement(
+        if (state is LoginsuccessState ) {
+          if(state.Response.data!.token !=null){
+            Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => Homescreen(),
+              builder: (context) => HomePage(),
             ),
           );
           showSnackbar(context: context, message: state.Response.message!, color: Colors.green);
+          CashHelper.SaveData("token", state.Response.data!.token);
+          }
         }
         if(state is LoginwthierrorState){
            showSnackbar(context: context, message: "Rowng Email or passowrd ! ", color: Colors.red);

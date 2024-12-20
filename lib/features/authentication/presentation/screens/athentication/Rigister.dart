@@ -6,7 +6,7 @@ import 'package:flutter_application_4/features/authentication/presentation/scree
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter_application_4/features/authentication/data/Dio_helper/dio_helper.dart';
+import 'package:flutter_application_4/core/Helpers/Dio_helper/dio_helper.dart';
 
 class Register extends StatelessWidget {
   @override

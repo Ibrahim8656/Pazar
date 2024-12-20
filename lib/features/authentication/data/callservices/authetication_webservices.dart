@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:flutter_application_4/features/authentication/data/Dio_helper/dio_helper.dart';
+import 'package:flutter_application_4/core/Helpers/Dio_helper/dio_helper.dart';
 import 'package:http_parser/http_parser.dart';
 
 class AutheticationWebservices {
