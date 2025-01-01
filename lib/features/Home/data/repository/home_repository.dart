@@ -1,5 +1,5 @@
-import 'package:flutter_application_4/core/models/Homemodel.dart';
-import 'package:flutter_application_4/features/Home/data/callservices/Home_callservice.dart';
+import 'package:SHOPPING/core/models/Homemodel.dart';
+import 'package:SHOPPING/features/Home/data/callservices/Home_callservice.dart';
 
 class HomeRepository {
  final HomeCallservice homeCallservice;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_4/features/Home/cubit/home_cubit.dart';
+import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoritesScreen extends StatelessWidget {
@@ -8,7 +8,10 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("favoraite"),),
+      body: ListView.builder(itemBuilder: (context,index)=>Column(children: [
+        Text("hi")
+      ],),
+      itemCount: 5,),
     );
   }
 }

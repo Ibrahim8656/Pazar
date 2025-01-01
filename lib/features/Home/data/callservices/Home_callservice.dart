@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_application_4/core/Helpers/Dio_helper/dio_helper.dart';
-import 'package:flutter_application_4/core/Helpers/shearedprefrences/shearedPrefrences.dart';
+import 'package:SHOPPING/core/Helpers/Dio_helper/dio_helper.dart';
+import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
 
 class HomeCallservice {
   Future<Map<String,dynamic>>GetHomedata()async{

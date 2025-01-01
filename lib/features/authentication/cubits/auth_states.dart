@@ -1,5 +1,5 @@
-import 'package:flutter_application_4/core/models/loginmodel.dart';
-import 'package:flutter_application_4/core/models/userRegister_model.dart';
+import 'package:SHOPPING/core/models/loginmodel.dart';
+import 'package:SHOPPING/core/models/userRegister_model.dart';
 
 class AuthStates {}
 class intialstate extends AuthStates{}

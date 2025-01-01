@@ -1,14 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_4/core/Helpers/shearedprefrences/shearedPrefrences.dart';
-import 'package:flutter_application_4/features/Home/presentation/home_screen.dart';
-import 'package:flutter_application_4/features/authentication/cubits/auth_cubit.dart';
-import 'package:flutter_application_4/features/authentication/cubits/auth_states.dart';
-import 'package:flutter_application_4/features/authentication/presentation/screens/athentication/Rigister.dart';
+import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
+import 'package:SHOPPING/features/Home/presentation/hime_layout.dart';
+import 'package:SHOPPING/features/authentication/cubits/auth_cubit.dart';
+import 'package:SHOPPING/features/authentication/cubits/auth_states.dart';
+import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Rigister.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter_application_4/core/Helpers/Dio_helper/dio_helper.dart';
+import 'package:SHOPPING/core/Helpers/Dio_helper/dio_helper.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
             Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => HomePage(),
+              builder: (context) => HomeLayout(),
             ),
           );
           showSnackbar(context: context, message: state.Response.message!, color: Colors.green);
