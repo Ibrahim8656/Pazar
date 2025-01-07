@@ -17,34 +17,52 @@ class Search extends StatelessWidget {
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return Padding(
-              padding: const EdgeInsets.only(top: 100, left: 25,right: 25),
-              child: Column(
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder()
+            padding: const EdgeInsets.only(top: 50, left: 25, right: 25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Search",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                    controller: searchedPrudect,
-                    onChanged: (searchedPrudect) {
-                      HomeCubit.get(context).Search(searchedPrudect);
-                    },
+                    hintText: "What are you looking for?",
+                    fillColor: const Color.fromARGB(255, 230, 230, 230),
+                    filled: true,
                   ),
-                 State is!  shearshingState 
-                      ? Expanded(
-                        child: ListView.builder(
-                            itemBuilder: (context, index) => ProductItem(
-                                HomeCubit.get(context).SearchProductList,
-                                index,
-                                context),
-                            itemCount: HomeCubit.get(context).SearchProductList.length,
+                  controller: searchedPrudect,
+                  onChanged: (searchedPrudect) {
+                    HomeCubit.get(context).Search(searchedPrudect);
+                  },
+                ),
+                State is! shearshingState
+                    ? Expanded(
+                        child: ListView.separated(
+                          itemBuilder: (context, index) => ProductItem(
+                              HomeCubit.get(context).SearchProductList,
+                              index,
+                              context),
+                          itemCount:
+                              HomeCubit.get(context).SearchProductList.length,
+                          separatorBuilder: (BuildContext context, int index) =>
+                              SizedBox(
+                            height: 20,
                           ),
-                      )
-                      : Center(
-                          child: Text("search for needed prouduct"),
                         ),
-                ],
-              ),
-            );
+                      )
+                    : Center(
+                        child: Text("search for needed prouduct"),
+                      ),
+              ],
+            ),
+          );
         },
       ),
     );
