@@ -10,5 +10,6 @@ final CategoriesCallservice categoriesCallservice;
    CategoryModel categoryModel=CategoryModel.fromJson(Category);
    return categoryModel;
   }
+ 
 
 }

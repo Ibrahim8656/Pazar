@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:SHOPPING/sheared/constatnts.dart';
 
 class DioHelper {
@@ -28,6 +27,7 @@ class DioHelper {
     dio.options.headers={
        'Authorization': token,
       'lang': 'en',
+      'Content-Type': 'application/json',
     };
    return dio.post(Url,data: data );
  

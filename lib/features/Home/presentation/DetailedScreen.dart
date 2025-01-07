@@ -1,12 +1,14 @@
 import 'package:SHOPPING/core/models/Homemodel.dart';
+import 'package:SHOPPING/core/widgets/defualt_buttom.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:SHOPPING/core/models/favorites_model.dart';
-import 'package:SHOPPING/core/widgets/defualt_buttom.dart';
 
-class DetailedFavoritesScreens extends StatelessWidget {
-  const DetailedFavoritesScreens({super.key, required this.product, });
-  final Product product;
+class DetailedScreen extends StatelessWidget {
+  const DetailedScreen({
+    super.key,
+    required this.product,
+  });
+  final Products product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -25,7 +25,6 @@ class Buildcarouselslider extends StatelessWidget {
                       fit: BoxFit.cover,
                       width: double.infinity,
                 ),
-                
               )
               .toList()
           : [],

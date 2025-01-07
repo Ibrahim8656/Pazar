@@ -47,8 +47,8 @@ class HomeLayout extends StatelessWidget {
                     label: 'category',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.person),
-                    label: 'Profile',
+                    icon: Icon(Icons.shopping_cart),
+                    label: 'Cart',
                   ),
                 ],
                 currentIndex: HomeCubit.get(context).currentIndex,

@@ -20,7 +20,7 @@ class CategoriesListview extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             child: CachedNetworkImage(imageUrl:CategoriesCubit.get(context).Categorys![index].image!,placeholder:(context, url) => Image.asset("assets/images/loaddd.jpg"), )
           ),
-          Text(CategoriesCubit.get(context).Categorys![index].name!),
+          Text(CategoriesCubit.get(context).Categorys![index].name!,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
         ],
       ),
       itemCount: CategoriesCubit.get(context).Categorys!

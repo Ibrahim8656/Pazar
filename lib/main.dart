@@ -1,5 +1,11 @@
 
+import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
+import 'package:SHOPPING/features/Cart/data/Cart_Reposetory/Cart_Reposetory.dart';
+import 'package:SHOPPING/features/Cart/data/Cart_callservice/Cart_callservice.dart';
 import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Login_screen.dart';
+import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
+import 'package:SHOPPING/features/favorites/data/favorites_callservice/favorites_callservice.dart';
+import 'package:SHOPPING/features/favorites/data/favorites_repository/favorites_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:SHOPPING/core/Helpers/Dio_helper/dio_helper.dart';
@@ -28,9 +34,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-       BlocProvider(create: (_) => AuthCubit(AuthenticationRepository(AutheticationWebservices()))),
-       BlocProvider(create: (_) => CategoriesCubit(CategoriesRepository(CategoriesCallservice()))..GetCategories()),
-     BlocProvider(create: (_) => HomeCubit(HomeRepository(homeCallservice: HomeCallservice()))..GetHomedata())
+     BlocProvider(create: (_) => AuthCubit(AuthenticationRepository(AutheticationWebservices()))),
+     BlocProvider(create: (_) => CategoriesCubit(CategoriesRepository(CategoriesCallservice()))..GetCategories()),
+     BlocProvider(create: (_) => HomeCubit(HomeRepository(homeCallservice: HomeCallservice()))..GetHomedata()),
+     BlocProvider(create: (_) => FavoritesCubit(FavoritesRepository(FavoritesCallservice()))..GetFavorites()),
+     BlocProvider(create: (_) => CartCubit(CartReposetory(CartCallservice()))..GetCart()),
    
       ],
       child: MaterialApp(

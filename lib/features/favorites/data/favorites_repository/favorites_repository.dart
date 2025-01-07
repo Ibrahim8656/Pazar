@@ -12,8 +12,8 @@ class FavoritesRepository {
     FavoritesModel favoritesModel=FavoritesModel.fromJson(favoritesdata);
     return favoritesModel;
   }
-   Future<AddfaforiteModel>AddAndRemoveFavorite(String token,data)async{
-    final response=await favoritesCallservice.AddAndRemoveFavorite(token, data);
+   Future<AddfaforiteModel>AddAndRemoveFavorite(String token,int ProductID)async{
+    final response=await favoritesCallservice.AddAndRemoveFavorite(token, ProductID);
      AddfaforiteModel addfaforiteModel =AddfaforiteModel.fromJson(response);
      return addfaforiteModel;
    }

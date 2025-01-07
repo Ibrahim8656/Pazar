@@ -1,4 +1,5 @@
-import 'dart:io';
+
+import 'package:SHOPPING/core/methods/showsnackbaar.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
 import 'package:SHOPPING/features/Home/presentation/hime_layout.dart';
@@ -6,9 +7,7 @@ import 'package:SHOPPING/features/authentication/cubits/auth_cubit.dart';
 import 'package:SHOPPING/features/authentication/cubits/auth_states.dart';
 import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Rigister.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:SHOPPING/core/Helpers/Dio_helper/dio_helper.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -37,7 +36,7 @@ class LoginScreen extends StatelessWidget {
       },
       builder: (BuildContext context, AuthStates state) {
         return Scaffold(
-          backgroundColor: Colors.red,
+          backgroundColor: const Color.fromARGB(255, 255, 217, 0),
           body: Column(
             children: [
               Expanded(
@@ -152,12 +151,4 @@ TextFormField Textformfild(String validatemessage, String hintText,
   );
 }
 
-void showSnackbar(
-    {required BuildContext context,
-    required String message,
-    required Color color}) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    content: Text(message),
-    backgroundColor: color,
-  ));
-}
+

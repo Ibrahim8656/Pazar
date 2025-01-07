@@ -1,3 +1,4 @@
+import 'package:SHOPPING/features/Cart/presentation/cart_Screen.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/models/Homemodel.dart';
@@ -18,7 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
   List<Widget> Screens = [
     HomeScreen(),
     CategoriesScreen(),
-    FavoritesScreen(),
+    CartScreen(),
   ];
 
   List <String>AppBarTitle=["Products","Categories","favorites"];
@@ -45,5 +46,11 @@ Future<void> GetHomedata() async {
     emit(HomeDataErrorState(Error: error.toString()));
   }
 }
+   List<Products>SearchProductList=[];
+  Search(String Searchedname){
+    SearchProductList=Allproducts.where((product)=>product.name!.toLowerCase().startsWith(Searchedname)).toList(); 
+   print(SearchProductList.length);
+    emit(shearshingState());
+  }
 
 }

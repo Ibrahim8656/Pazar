@@ -26,4 +26,4 @@ final class CahngingFavoritesErrorState extends FavoritesState {
 
  CahngingFavoritesErrorState(this.Error);
 }
-
+final class CHangingIconColorstate extends FavoritesState {}

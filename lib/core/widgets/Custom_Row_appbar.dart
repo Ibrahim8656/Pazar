@@ -1,8 +1,11 @@
+import 'package:SHOPPING/core/models/Homemodel.dart';
+import 'package:SHOPPING/features/Home/presentation/Search_Screen.dart';
+import 'package:SHOPPING/features/favorites/presentation/screens/favorites.dart';
 import 'package:flutter/material.dart';
 
 class CustomRowAppbar extends StatelessWidget {
-  const CustomRowAppbar({super.key});
-
+  const CustomRowAppbar({super.key, required this.product});
+  final List<Products> product;
   @override
   Widget build(BuildContext context) {
     return    Row(
@@ -18,8 +21,8 @@ class CustomRowAppbar extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context) => Search()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Search(product:product ,),),);
                       },
                       child: Container(
                           height: 35,
@@ -43,7 +46,7 @@ class CustomRowAppbar extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>F()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>FavoritesScreen()));
                       },
                       icon: Icon(
                         Icons.favorite_border,

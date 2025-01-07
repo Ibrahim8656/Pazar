@@ -17,3 +17,5 @@ class HomeDataErrorState extends HomeState {
   final String? Error; // Ensure it's nullable
   HomeDataErrorState({this.Error});  // Pass null as the default value if no error
 }
+final class shearshingState extends HomeState{
+}
