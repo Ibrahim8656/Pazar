@@ -73,8 +73,8 @@ class HomeScreen extends StatelessWidget {
                                SliverToBoxAdapter(child: SizedBox(height: 20,)),
                               HomeCubit.get(context).Allproducts.isNotEmpty
                                   ? buildproductsGrid(
-                                      HomeCubit.get(context).Allproducts,
-                                      context)
+                                      
+                                      Allproducts: HomeCubit.get(context).Allproducts,context: context)
                                   : SliverToBoxAdapter(
                                       child: Center(
                                           child:

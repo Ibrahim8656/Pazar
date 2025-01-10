@@ -1,5 +1,7 @@
+import 'package:SHOPPING/core/models/Categorisdetailedmodel.dart';
 import 'package:SHOPPING/core/models/categories_model.dart';
 import 'package:SHOPPING/features/categories/data/callServices/categories_callService.dart';
+import 'package:SHOPPING/features/categories/presentation/categories_Screen.dart';
 
 class CategoriesRepository {
 final CategoriesCallservice categoriesCallservice;
@@ -11,5 +13,9 @@ final CategoriesCallservice categoriesCallservice;
    return categoryModel;
   }
  
-
+Future<Categorisdetailedmodel> GetCategoriesDetails(int CategoryId) async {
+  final CategoriesProducts=await categoriesCallservice.GetCategoriesDetails(CategoryId);
+  Categorisdetailedmodel categorisdetailedmodel=Categorisdetailedmodel.fromJson(CategoriesProducts);
+  return categorisdetailedmodel;
+}
 }

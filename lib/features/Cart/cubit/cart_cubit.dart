@@ -14,11 +14,14 @@ class CartCubit extends Cubit<CartState> {
   CartCubit(this.cartReposetory) : super(CartInitial());
   static CartCubit get(context) => BlocProvider.of(context);
   List<CartItems> cartproducts = [];
+  double total=0;
   Future<void> GetCart() async {
     emit(GetCartLoadingState());
     try {
       final response = await cartReposetory.GetCart();
       cartproducts = response.data!.cartItems!;
+      total=response.data.total;
+      print(total);
       emit(
         GetCartSuccessState(cartproducts),
       );

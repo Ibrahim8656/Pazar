@@ -2,7 +2,7 @@ import 'package:SHOPPING/core/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/models/Homemodel.dart';
 
-SliverGrid buildproductsGrid(List<Products> Allproducts, context) {
+SliverGrid buildproductsGrid({required List<Products> Allproducts,required context}) {
   return SliverGrid.count(
     crossAxisCount: 2,
     crossAxisSpacing: 22,

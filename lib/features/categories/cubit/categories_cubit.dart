@@ -1,3 +1,4 @@
+import 'package:SHOPPING/core/models/Categorisdetailedmodel.dart';
 import 'package:bloc/bloc.dart';
 import 'package:SHOPPING/core/models/categories_model.dart';
 import 'package:SHOPPING/features/categories/data/Repository/categories_Repository.dart';
@@ -28,5 +29,18 @@ class CategoriesCubit extends Cubit<CategoriesState> {
         ),
       );
     }
+  }
+  Future<void> GetCategoriesDetails(int CategoryId) async {
+    emit(GetCategoriesDetailsLoadingState());
+    try{
+       final CategoriesProducts=await categoriesRepository.GetCategoriesDetails(CategoryId);
+       CategoriesProducts.data!.data;
+       emit(GetCategoriesDetailsCuccessState(CategoriesProducts));
+    }catch(error){
+      print(error);
+      emit(GetCategoriesDetailsErrorState(error.toString()),);
+    }
+   
+
   }
 }
