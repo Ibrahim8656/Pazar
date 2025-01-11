@@ -1,4 +1,5 @@
 import 'package:SHOPPING/features/Cart/presentation/cart_Screen.dart';
+import 'package:SHOPPING/features/profile/presentation/Profilescreen.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/models/Homemodel.dart';
@@ -20,6 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
     HomeScreen(),
     CategoriesScreen(),
     CartScreen(),
+    Profilescreen()
   ];
 
   List <String>AppBarTitle=["Products","Categories","favorites"];

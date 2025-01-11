@@ -1,5 +1,5 @@
 import 'package:SHOPPING/core/models/cart_model.dart';
-import 'package:SHOPPING/core/widgets/AddAndRemoveCartmoder.dart';
+import 'package:SHOPPING/core/models/AddAndRemoveCartmoder.dart';
 import 'package:SHOPPING/features/Cart/data/Cart_Reposetory/Cart_Reposetory.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';

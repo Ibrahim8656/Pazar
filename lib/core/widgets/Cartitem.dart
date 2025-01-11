@@ -2,6 +2,7 @@ import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
 import 'package:SHOPPING/core/models/cart_model.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -129,7 +130,7 @@ class CartItem extends StatelessWidget {
                       Icon(
                         Icons.favorite,
                         color: cartProduct[index].product.inFavorites
-                            ? Colors.red
+                            ? primarycolor
                             : const Color.fromARGB(255, 180, 180, 180),
                       ),
                       TextButton(

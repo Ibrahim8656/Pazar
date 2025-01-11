@@ -1,5 +1,6 @@
 import 'package:SHOPPING/core/widgets/Cartitem.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class CartScreen extends StatelessWidget {
         final cartdata=CartCubit.get(context).total;
         return Scaffold(
           appBar: AppBar(
-            leading: Icon(Icons.shopping_cart),
+            leading: Icon(Icons.shopping_cart,color: primarycolor,),
             title: Text("cart"),
           ),
           body: ConditionalBuilder(
@@ -30,14 +31,14 @@ class CartScreen extends StatelessWidget {
                     ),
                 itemCount: cartProduct.length),
             fallback: (context) => Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(color: primarycolor,),
             ),
           ),
           bottomSheet: Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             height: 70,
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: primarycolor,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(

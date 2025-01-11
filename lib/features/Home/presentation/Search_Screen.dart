@@ -3,6 +3,7 @@ import 'package:SHOPPING/core/widgets/Custom_Row_appbar.dart';
 import 'package:SHOPPING/core/widgets/product_grid.dart';
 import 'package:SHOPPING/core/widgets/product_item.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,26 +24,34 @@ class Search extends StatelessWidget {
               children: [
                 Text(
                   "Search",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: primarycolor),
                 ),
                 SizedBox(
                   height: 8,
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    hintText: "What are you looking for?",
-                    fillColor: const Color.fromARGB(255, 230, 230, 230),
-                    filled: true,
-                  ),
-                  controller: searchedPrudect,
-                  onChanged: (searchedPrudect) {
-                    HomeCubit.get(context).Search(searchedPrudect);
-                  },
-                ),
-                State is! shearshingState
+             TextField(
+  decoration: InputDecoration(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: BorderSide(color: primarycolor, width: 2.0),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+    ),
+    hintText: "What are you looking for?",
+    fillColor: const Color.fromARGB(255, 245, 245, 245),
+    filled: true,
+  ),
+  controller: searchedPrudect,
+  onChanged: (searchedPrudect) {
+    HomeCubit.get(context).Search(searchedPrudect);
+  },
+),
+  State is! shearshingState
                     ? Expanded(
                         child: ListView.separated(
                           itemBuilder: (context, index) => ProductItem(

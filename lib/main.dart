@@ -2,6 +2,7 @@
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/Cart/data/Cart_Reposetory/Cart_Reposetory.dart';
 import 'package:SHOPPING/features/Cart/data/Cart_callservice/Cart_callservice.dart';
+import 'package:SHOPPING/features/Home/presentation/splash_screen.dart';
 import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Login_screen.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/features/favorites/data/favorites_callservice/favorites_callservice.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
    
       ],
       child: MaterialApp(
-        home:  LoginScreen(),
+        home:  SplashScreen(),
       ),
     );
   }

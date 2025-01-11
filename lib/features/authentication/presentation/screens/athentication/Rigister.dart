@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/features/authentication/cubits/auth_cubit.dart';
 import 'package:SHOPPING/features/authentication/cubits/auth_states.dart';
@@ -19,7 +20,8 @@ class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: primarycolor
+      ,
       body: BlocConsumer<AuthCubit, AuthStates>(
         listener: (context, state) {
           // Check state here and navigate accordingly
@@ -36,7 +38,7 @@ class Register extends StatelessWidget {
             showSnackbar(
                 context: context,
                 message: state.Response.message!,
-                color: Colors.red);
+                color: primarycolor);
           }
         },
         builder: (context, state) {
@@ -111,18 +113,25 @@ class Register extends StatelessWidget {
                               children: [
                                 ConditionalBuilder(
                                   condition: state is! Registerloadigstate,
-                                  builder: (context) => TextButton(
-                                    onPressed: () {
-                                      if (formKey.currentState!.validate()) {
-                                        AuthCubit.get(context).Register(
-                                          nameController.text,
-                                          phoneController.text,
-                                          emailController.text,
-                                          passwordController.text,
-                                        );
-                                      }
-                                    },
-                                    child: Center(child: Text('Register')),
+                                  builder: (context) => Container(
+                                    width: 200,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: primarycolor,
+                                    ),
+                                    child: TextButton(
+                                      onPressed: () {
+                                        if (formKey.currentState!.validate()) {
+                                          AuthCubit.get(context).Register(
+                                            nameController.text,
+                                            phoneController.text,
+                                            emailController.text,
+                                            passwordController.text,
+                                          );
+                                        }
+                                      },
+                                      child: Center(child: Text('Register',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),)),
+                                    ),
                                   ),
                                   fallback: (context) => Center(
                                     child: CircularProgressIndicator(),

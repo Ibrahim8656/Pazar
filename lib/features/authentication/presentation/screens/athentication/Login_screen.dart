@@ -1,8 +1,9 @@
 
 import 'package:SHOPPING/core/methods/showsnackbaar.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
-import 'package:SHOPPING/features/Home/presentation/hime_layout.dart';
+import 'package:SHOPPING/features/Home/presentation/home_layout.dart';
 import 'package:SHOPPING/features/authentication/cubits/auth_cubit.dart';
 import 'package:SHOPPING/features/authentication/cubits/auth_states.dart';
 import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Rigister.dart';
@@ -36,7 +37,8 @@ class LoginScreen extends StatelessWidget {
       },
       builder: (BuildContext context, AuthStates state) {
         return Scaffold(
-          backgroundColor: const Color.fromARGB(255, 255, 217, 0),
+          backgroundColor:
+          primarycolor,
           body: Column(
             children: [
               Expanded(
@@ -102,26 +104,33 @@ class LoginScreen extends StatelessWidget {
                               children: [
                                 ConditionalBuilder(
                                   condition: state is! Loginloadigstate,
-                                  builder: (context) => TextButton(
-                                    onPressed: () {
-                                      if (formKey.currentState!.validate()) {
-                                        AuthCubit.get(context).Login(
-                                            email: emailController.text,
-                                            password: passwordController.text);
-                                      }
-                                    },
-                                    child: Center(child: Text('LOGIN')),
+                                  builder: (context) => Container(
+                                    width: 200,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: primarycolor,
+                                    ),
+                                    child: TextButton(
+                                      onPressed: () {
+                                        if (formKey.currentState!.validate()) {
+                                          AuthCubit.get(context).Login(
+                                              email: emailController.text,
+                                              password: passwordController.text);
+                                        }
+                                      },
+                                      child: Center(child: Text('LOGIN',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16))),
+                                    ),
                                   ),
                                   fallback: (context) => Center(
-                                    child: CircularProgressIndicator(),
+                                    child: CircularProgressIndicator(color: primarycolor,),
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 20),
+                            SizedBox(height: 30),
                             TextButton(onPressed: (){
                               Navigator.push(context,MaterialPageRoute(builder: (context)=>Register()),);
-                            }, child: Text("Create New Account"),)
+                            }, child: Text("Create New Account ?"),)
                           ],
                         ),
                       ),

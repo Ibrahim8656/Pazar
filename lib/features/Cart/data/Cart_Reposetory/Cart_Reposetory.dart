@@ -1,5 +1,5 @@
 import 'package:SHOPPING/core/models/cart_model.dart';
-import 'package:SHOPPING/core/widgets/AddAndRemoveCartmoder.dart';
+import 'package:SHOPPING/core/models/AddAndRemoveCartmoder.dart';
 import 'package:SHOPPING/features/Cart/data/Cart_callservice/Cart_callservice.dart';
 
 class CartReposetory {

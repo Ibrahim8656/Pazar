@@ -1,4 +1,5 @@
 import 'package:SHOPPING/core/widgets/CategoriesListview.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/widgets/Custom_Row_appbar.dart';
@@ -85,6 +86,8 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                 fallback: (context) =>
-                    Center(child: CircularProgressIndicator()))));
+                    Center(child: CircularProgressIndicator(
+                      color: primarycolor,
+                    )))));
   }
 }

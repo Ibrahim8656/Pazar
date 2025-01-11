@@ -40,19 +40,7 @@ class DetailedScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  height: 35,
-                  width: 260,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        labelText: 'what are you looking for?',
-                        labelStyle: TextStyle(fontSize: 15),
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10)))),
-                  ),
-                ),
+               
               ],
             ),
             SizedBox(

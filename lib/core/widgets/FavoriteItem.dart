@@ -2,6 +2,7 @@
 import 'package:SHOPPING/core/models/favorites_model.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/features/favorites/presentation/screens/detailed_favorites_Screens.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +52,7 @@ InkWell favoritItembuilder(
             Spacer(),
             CircleAvatar(
               radius: 14,
-              backgroundColor: Colors.red,
+              backgroundColor: primarycolor,
               child: IconButton(
                 onPressed: () {
                    FavoritesCubit.get(context).AddAndRemoveFavorite(CashHelper.Getdata('token'),FavProductList[index].product.id,context);

@@ -3,6 +3,7 @@ import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
 import 'package:SHOPPING/features/Home/presentation/DetailedScreen.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/models/Homemodel.dart';
@@ -74,7 +75,7 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                                             .Allproducts[index]
                                             .inFavorites ==
                                         true
-                                    ? Colors.red
+                                    ? primarycolor
                                     : Colors.grey,
                               ),
                               color: Colors.white,
@@ -102,7 +103,7 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                                   borderRadius: BorderRadius.circular(10)),
                               height: 24,
                               width: 24,
-                              child: Center(child: Icon(Icons.shopping_cart,color:Allproducts[index].inCart!?Colors.red: Colors.grey ,),),),
+                              child: Center(child: Icon(Icons.shopping_cart,color:Allproducts[index].inCart!?primarycolor: Colors.grey ,),),),
                         )
                       ],
                     )
@@ -110,7 +111,7 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                 ),
                 if (Allproducts[index].discount != 0)
                   Container(
-                    color: Colors.red,
+                    color: primarycolor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 3.0),
                       child: Text(

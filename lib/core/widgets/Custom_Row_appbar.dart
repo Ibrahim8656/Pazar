@@ -1,6 +1,7 @@
 import 'package:SHOPPING/core/models/Homemodel.dart';
 import 'package:SHOPPING/features/Home/presentation/Search_Screen.dart';
 import 'package:SHOPPING/features/favorites/presentation/screens/favorites.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomRowAppbar extends StatelessWidget {
@@ -16,7 +17,7 @@ class CustomRowAppbar extends StatelessWidget {
                       child: Text(
                         'Pazar',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25),
+                            fontWeight: FontWeight.bold, fontSize: 25,color: primarycolor),
                       ),
                     ),
                     InkWell(
@@ -28,14 +29,14 @@ class CustomRowAppbar extends StatelessWidget {
                           height: 35,
                           width: 230,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: primarycolor),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Row(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 10.0),
-                                child: Icon(Icons.search),
+                                child: Icon(Icons.search,color: primarycolor,),
                               ),
                               SizedBox(
                                 width: 10,
@@ -51,7 +52,7 @@ class CustomRowAppbar extends StatelessWidget {
                       icon: Icon(
                         Icons.favorite_border,
                         size: 30,
-                        color: Colors.grey,
+                        color: primarycolor,
                       ),
                     ),
                   ],

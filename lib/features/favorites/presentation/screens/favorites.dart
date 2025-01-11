@@ -1,6 +1,7 @@
 
 import 'package:SHOPPING/core/widgets/FavoriteItem.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,7 @@ class FavoritesScreen extends StatelessWidget {
                         ),
                     itemCount: favorites.length),
                 fallback: (context) =>
-                    Center(child: CircularProgressIndicator(),),),);
+                    Center(child: CircularProgressIndicator(color: primarycolor,),),),);
       },
     );
   }

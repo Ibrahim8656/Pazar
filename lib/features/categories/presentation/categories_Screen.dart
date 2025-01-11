@@ -1,4 +1,5 @@
 import 'package:SHOPPING/features/categories/presentation/categorisdetailes_screen.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/features/categories/cubit/categories_cubit.dart';
@@ -14,7 +15,7 @@ class CategoriesScreen extends StatelessWidget {
         final Category = CategoriesCubit.get(context).Categorys;
         return Scaffold(
           appBar: AppBar(
-            leading: Icon(Icons.category),
+            leading: Icon(Icons.category,color: primarycolor,),
             title: Text("Categories"),
             backgroundColor: Colors.white,
           ),

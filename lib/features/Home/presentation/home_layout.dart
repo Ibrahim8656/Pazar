@@ -1,3 +1,4 @@
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
 import 'package:SHOPPING/features/Home/data/callservices/Home_callservice.dart';
@@ -50,9 +51,13 @@ class HomeLayout extends StatelessWidget {
                     icon: Icon(Icons.shopping_cart),
                     label: 'Cart',
                   ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person),
+                    label: 'Profile',
+                  ),
                 ],
                 currentIndex: HomeCubit.get(context).currentIndex,
-                selectedItemColor: Colors.blue,
+                selectedItemColor: primarycolor,
                 unselectedItemColor: Colors.grey,
                 onTap: (index) {
                   HomeCubit.get(context).ontaponbottomnavigationbar(index);
