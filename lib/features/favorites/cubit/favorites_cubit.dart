@@ -39,10 +39,8 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     CartCubit.get(context)..GetCart();
     showSnackbar(context: context, message: responese.message!, color: Colors.grey);
     GetFavorites();
-    print(responese.message);
     emit(CahngingFavoritesSuccessState(responese));
     }catch (error){
-      print(error.toString());
       emit(CahngingFavoritesErrorState(error.toString()));
     }
 

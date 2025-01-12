@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/models/Homemodel.dart';
 import 'package:SHOPPING/features/Home/data/repository/home_repository.dart';
 import 'package:SHOPPING/features/Home/presentation/home_screen.dart';
-import 'package:SHOPPING/features/favorites/presentation/screens/favorites.dart';
 import 'package:SHOPPING/features/categories/presentation/categories_Screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -44,14 +43,12 @@ Future<void> GetHomedata() async {
      Allproducts=await homedata.data!.products ??[];
     emit(HomeDataSuccessState(homemodel: homedata));
   } catch (error) {
-    print(error.toString());
     emit(HomeDataErrorState(Error: error.toString()));
   }
 }
    List<Products>SearchProductList=[];
   Search(String Searchedname){
-    SearchProductList=Allproducts.where((product)=>product.name!.toLowerCase().startsWith(Searchedname)).toList(); 
-   print(SearchProductList.length);
+    SearchProductList=Allproducts.where((product)=>product.name!.toLowerCase().startsWith(Searchedname)).toList();
     emit(shearshingState());
   }
 

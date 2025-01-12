@@ -18,7 +18,6 @@ Data? userdata;
       userdata=profile.data;
       emit(GetprofileSuccess(profile));
     } catch (error) {
-      print(error.toString());
       emit(GetprofileError());
     }
   }

@@ -11,8 +11,6 @@ class AuthCubit extends Cubit<AuthStates>{
     emit(Registerloadigstate());
    try{
     final register=await authenticationRepository.Register(name, phone, email, password);
-    print(register.status);
-    print(register.message);
     if(register.status==true){
         emit(RegistersuccessState(register));
     }else if(register.status==false){
