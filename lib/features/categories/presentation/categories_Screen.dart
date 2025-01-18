@@ -51,8 +51,8 @@ class CategoriesScreen extends StatelessWidget {
                                   alignment: AlignmentDirectional.bottomStart,
                                   children: [
                                     Container(
-                                      height: 170,
-                                      width: 160,
+                                      height: MediaQuery.sizeOf(context).height*.2,
+                                      width:  MediaQuery.sizeOf(context).width*.4,
                                       child: CachedNetworkImage(
                                         imageUrl: Category[index].image!,
                                         fit: BoxFit.fill,

@@ -13,7 +13,7 @@ class CategoriesListview extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) => Column(
         children: [
-          Container(height: 180,
+          Container(height: MediaQuery.sizeOf(context).height*.2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
             ),
@@ -26,7 +26,7 @@ class CategoriesListview extends StatelessWidget {
       itemCount: CategoriesCubit.get(context).Categorys!
       .length,
       separatorBuilder: (BuildContext context, int index) => SizedBox(
-        width: 12,
+        width: MediaQuery.sizeOf(context).width*.020,
       ),
     );
   }

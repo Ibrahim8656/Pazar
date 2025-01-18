@@ -31,8 +31,8 @@ class CartItem extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: 130,
-                  width: 130,
+                  height: MediaQuery.sizeOf(context).width*.3,
+                  width: MediaQuery.sizeOf(context).width*.3,
                   padding: EdgeInsets.only(top: 10,left: 10),
                   child: CachedNetworkImage(
                     imageUrl:
@@ -52,7 +52,7 @@ class CartItem extends StatelessWidget {
                   width: 15,
                 ),
                 Container(
-                  width: 160,
+                  width: MediaQuery.sizeOf(context).height*.2,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -104,7 +104,7 @@ class CartItem extends StatelessWidget {
               children: [
                 SizedBox(width: 10),
                 Container(
-                  height: 35,
+                  height: MediaQuery.sizeOf(context).height*.040,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: const Color.fromARGB(255, 226, 226, 226)),

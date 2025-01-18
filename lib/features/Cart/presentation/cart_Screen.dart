@@ -36,7 +36,7 @@ class CartScreen extends StatelessWidget {
           ),
           bottomSheet: Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
-            height: 70,
+            height: MediaQuery.sizeOf(context).height*.075,
             decoration: BoxDecoration(
               color: primarycolor,
               borderRadius: BorderRadius.circular(10),

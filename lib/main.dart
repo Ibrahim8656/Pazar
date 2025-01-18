@@ -2,8 +2,8 @@
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/Cart/data/Cart_Reposetory/Cart_Reposetory.dart';
 import 'package:SHOPPING/features/Cart/data/Cart_callservice/Cart_callservice.dart';
+import 'package:SHOPPING/features/Home/presentation/home_layout.dart';
 import 'package:SHOPPING/features/Home/presentation/splash_screen.dart';
-import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Login_screen.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/features/favorites/data/favorites_callservice/favorites_callservice.dart';
 import 'package:SHOPPING/features/favorites/data/favorites_repository/favorites_repository.dart';
@@ -24,7 +24,6 @@ import 'package:SHOPPING/sheared/myobserver.dart';
 
 void main() {
    Bloc.observer = MyBlocObserver();
-   
   DioHelper.init();
   runApp(const MyApp());
   CashHelper.init();
@@ -40,11 +39,10 @@ class MyApp extends StatelessWidget {
      BlocProvider(create: (_) => HomeCubit(HomeRepository(homeCallservice: HomeCallservice()))..GetHomedata()),
      BlocProvider(create: (_) => FavoritesCubit(FavoritesRepository(FavoritesCallservice()))..GetFavorites()),
      BlocProvider(create: (_) => CartCubit(CartReposetory(CartCallservice()))..GetCart()),
-   
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:  SplashScreen(),
+        home:CashHelper.Getdata("token")==null?SplashScreen():HomeLayout(),
       ),
     );
   }

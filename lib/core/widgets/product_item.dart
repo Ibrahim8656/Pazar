@@ -10,8 +10,7 @@ import 'package:SHOPPING/core/models/Homemodel.dart';
 
 Container ProductItem(List<Products> Allproducts, int index, context) {
   return Container(
-    height: 255,
-    
+    height: MediaQuery.sizeOf(context).height*.3,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
     ),
@@ -26,20 +25,20 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
       },
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: const Color.fromARGB(255, 206, 206, 206)),
-            color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            border: Border.all(color: const Color.fromARGB(255, 206, 206, 206)),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [
             Stack(
               alignment: AlignmentDirectional.bottomStart,
               children: [
                 Stack(
-                  
                   alignment: AlignmentDirectional.topEnd,
                   children: [
                     Container(
-                        height: 170,
-                        width: 170,
+                        height: MediaQuery.sizeOf(context).height*.2,
+                        width: MediaQuery.sizeOf(context).width*.4,
                         child: CachedNetworkImage(
                           imageUrl: Allproducts[index].image!,
                           placeholder: (context, url) =>
@@ -51,23 +50,24 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                         Padding(
                           padding: const EdgeInsets.only(top: 10.0),
                           child: Container(
-                             decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey,
-                                        spreadRadius: .5,
-                                        blurRadius: 1)
-                                  ],
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
-                              height: 24,
-                              width: 24,
+                            decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey,
+                                      spreadRadius: .5,
+                                      blurRadius: 1)
+                                ],
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10)),
+                            height: 24,
+                            width: 24,
                             child: IconButton(
                               onPressed: () {
-                                FavoritesCubit.get(context).AddAndRemoveFavorite(
-                                    CashHelper.Getdata('token'),
-                                    Allproducts[index].id!,
-                                    context);
+                                FavoritesCubit.get(context)
+                                    .AddAndRemoveFavorite(
+                                        CashHelper.Getdata('token'),
+                                        Allproducts[index].id!,
+                                        context);
                               },
                               icon: Icon(
                                 Icons.favorite_sharp,
@@ -88,22 +88,31 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                           height: 115,
                         ),
                         GestureDetector(
-                          onTap: (){
-                             CartCubit.get(context).AddAndRemoveCart(Allproducts[index].id!,context);
+                          onTap: () {
+                            CartCubit.get(context).AddAndRemoveCart(
+                                Allproducts[index].id!, context);
                           },
                           child: Container(
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey,
-                                        spreadRadius: .50,
-                                        blurRadius: 1)
-                                  ],
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
-                              height: 24,
-                              width: 24,
-                              child: Center(child: Icon(Icons.shopping_cart,color:Allproducts[index].inCart!?primarycolor: Colors.grey ,),),),
+                            decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey,
+                                      spreadRadius: .50,
+                                      blurRadius: 1)
+                                ],
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10)),
+                            height: 24,
+                            width: 24,
+                            child: Center(
+                              child: Icon(
+                                Icons.shopping_cart,
+                                color: Allproducts[index].inCart!
+                                    ? primarycolor
+                                    : Colors.grey,
+                              ),
+                            ),
+                          ),
                         )
                       ],
                     )

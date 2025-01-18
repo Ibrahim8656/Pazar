@@ -1,3 +1,4 @@
+import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
 import 'package:SHOPPING/features/profile/cubit/profile_cubit.dart';
 import 'package:SHOPPING/features/profile/data/profileRepository/profileRepository.dart';
 import 'package:SHOPPING/features/profile/data/profilecallserver/profilecallserver.dart';
@@ -10,6 +11,7 @@ class Profilescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return BlocProvider(
       create: (context) =>
           ProfileCubit(Profilerepository(Profilecallserver()))..GetProfile(),

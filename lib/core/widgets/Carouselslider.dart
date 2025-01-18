@@ -31,7 +31,7 @@ class Buildcarouselslider extends StatelessWidget {
       options: CarouselOptions(
         initialPage: 1,
         viewportFraction: 1,
-        height: 250,
+        height: MediaQuery.sizeOf(context).height*.250,
         reverse: false,
         autoPlay: true,
         autoPlayInterval: Duration(seconds: 3),

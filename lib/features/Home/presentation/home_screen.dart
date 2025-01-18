@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               SliverToBoxAdapter(
                                 child: SizedBox(
-                                  height: 300,
+                                  height:  MediaQuery.sizeOf(context).height*.340,
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
                                     child: Row(

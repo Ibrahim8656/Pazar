@@ -27,7 +27,7 @@ class CustomRowAppbar extends StatelessWidget {
                       },
                       child: Container(
                           height: 35,
-                          width: 230,
+                          width: MediaQuery.sizeOf(context).width*.5800,
                           decoration: BoxDecoration(
                             border: Border.all(color: primarycolor),
                             borderRadius: BorderRadius.circular(10),

@@ -24,8 +24,8 @@ InkWell favoritItembuilder(
         child: Row(
           children: [
             Container(
-                height: 130,
-                width: 130,
+                height: MediaQuery.sizeOf(context).height*.150,
+                width: MediaQuery.sizeOf(context).width*.3,
                 child: CachedNetworkImage(
                   imageUrl:
                       '${FavProductList[index].product.image}', // Network image URL
@@ -40,10 +40,10 @@ InkWell favoritItembuilder(
                   fit: BoxFit.cover,
                 )),
             SizedBox(
-              width: 15,
+              width: MediaQuery.sizeOf(context).width*.040,
             ),
             Container(
-              width: 160,
+              width: MediaQuery.sizeOf(context).width*.4,
               child: Text(
                   FavProductList[index].product.name,
                   overflow: TextOverflow.ellipsis,

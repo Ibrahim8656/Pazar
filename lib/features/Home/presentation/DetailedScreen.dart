@@ -1,187 +1,177 @@
 import 'package:SHOPPING/core/models/Homemodel.dart';
-import 'package:SHOPPING/core/widgets/defualt_buttom.dart';
+import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
+import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class DetailedScreen extends StatelessWidget {
+class DetailedScreen extends StatefulWidget {
   const DetailedScreen({
     super.key,
     required this.product,
   });
   final Products product;
+
+  @override
+  State<DetailedScreen> createState() => _DetailedScreenState();
+}
+
+class _DetailedScreenState extends State<DetailedScreen> {
+  int _currentIndex = 0; // To track the active image index
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 25,
-            ),
-            Row(
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 25,top: 50),
+                child: CircleAvatar(
+                  child: IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  radius: 25,
+                  backgroundColor: primarycolor,
+                ),
+              ),
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.all( 25),
+            child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 20.0,
+                // Carousel Slider
+                CarouselSlider(
+                  items: widget.product.images != null
+                      ? widget.product.images!
+                          .map(
+                            (e) => CachedNetworkImage(
+                              imageUrl: "$e",
+                              placeholder: (context, url) =>
+                                  Image.asset("assets/images/loaddd.jpg"),
+                              fit: BoxFit.contain,
+                              width: double.infinity,
+                            ),
+                          )
+                          .toList()
+                      : [],
+                  options: CarouselOptions(
+                    initialPage: 0,
+                    viewportFraction: 1,
+                    height: MediaQuery.sizeOf(context).height * .3,
+                    reverse: false,
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _currentIndex = index; 
+                      });
+                    },
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            size: 30,
-                          ))
-                    ],
-                  ),
+                ),
+                SizedBox(height: 15,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: widget.product.images != null
+                      ? List.generate(
+                          widget.product.images!.length,
+                          (index) => AnimatedContainer(
+                            duration: Duration(milliseconds: 300),
+                            margin: EdgeInsets.symmetric(horizontal: 4),
+                            width: _currentIndex == index ? 12 : 8,
+                            height: _currentIndex == index ? 12 : 8,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _currentIndex == index
+                                  ? primarycolor
+                                  : Colors.grey,
+                            ),
+                          ),
+                        )
+                      : [],
                 ),
                
               ],
             ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 300,
-                  child: Text(
-                    product.name!,
-                    maxLines: 2,
-                    softWrap: true,
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              alignment: AlignmentDirectional.topEnd,
-              children: [
-                CachedNetworkImage(
-                    imageUrl: product.image!,
-                    placeholder: (context, url) =>
-                        Image.asset("assets/images/loaddd.jpg"),
-                    height: 350,
-                    width: 300),
-                Column(
-                  children: [
-                    Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          // color: Shopcupit.get(context).favorits[products[productIndex].id] ==
-                          //     true
-                          // ? Colors.red
-                          // : Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey,
-                                spreadRadius: 1,
-                                blurRadius: 1,
-                                offset: Offset(0, 3))
-                          ]),
-                      child: IconButton(
-                        onPressed: () {
-                          // .AddandRemoveFavorit(products[productIndex].id);
-                        },
-                        icon: Icon(Icons.favorite_border),
-                        color: Colors.white,
-                        iconSize: 25,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey,
-                                spreadRadius: 1,
-                                blurRadius: 1,
-                                offset: Offset(0, 3))
-                          ]),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.share_sharp),
-                        color: Colors.grey,
-                        iconSize: 25,
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'EGP',
-                ),
-                Text(
-                  "${product.price}",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Only 2 left in the stock ',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 200,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
+          ),
+           Expanded(
+             child: Container(
+              width: double.infinity,
+                    decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 1,
-                            spreadRadius: .5,
-                            offset: Offset(0, 0))
-                      ]),
-                  height: 49,
-                  width: 55,
-                  child: Column(
-                    children: [
-                      Text('QUN'),
-                      Text(
-                        '1',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                          color: Colors.grey,
+                          blurRadius: 5,
+                          
+                        )
+                      ],
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only( left: 25,right: 25,top: 25),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                          Text("${widget.product.name}",style: TextStyle(
+                            fontSize: 20,fontWeight: FontWeight.bold,
+                          ),maxLines: 2,),
+                          SizedBox(height: 15,),
+                          Text("description",style: TextStyle(
+                            fontSize: 20,fontWeight: FontWeight.bold,
+                          )),
+                          Text("${widget.product.description}",maxLines: 10,style: TextStyle(
+                            fontSize: 14,fontWeight: FontWeight.bold,
+                          ),),
+                         SizedBox(height: 30,),
+                         Row(children: [
+                          Text("EGP"),
+                           Text("${widget.product.price}",maxLines: 8,style: TextStyle(
+                            fontSize: 18,fontWeight: FontWeight.bold,
+                          ),),
+                          Spacer(),
+                          InkWell(onTap: (){
+                             CartCubit.get(context).AddAndRemoveCart(
+                                widget.product.id!, context);
+                          },
+                            child: Container(height:  60,
+                            width: MediaQuery.sizeOf(context).width*.55,
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                Icon(Icons.shopping_bag,color: Colors.white,size: 26,),
+                                SizedBox(width: 10,),
+                                Text("Add to cart",style: TextStyle(
+                                  color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22
+                                ),)
+                              ],),
+                            ),
+                            decoration: BoxDecoration(
+                              color: primarycolor,
+                              borderRadius: BorderRadius.circular(30)
+                            ),),
+                          )
+                         ],)
+             
+                          
+                        ],),
                       ),
-                    ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                defbotton(textt: 'Add to card', onpressed: () {}, width: 250),
-              ],
-            ),
-          ],
-        ),
+           )
+         ,
+        
+        ],
       ),
+      
     );
   }
 }
