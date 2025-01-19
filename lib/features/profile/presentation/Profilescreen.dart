@@ -1,4 +1,5 @@
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
+import 'package:SHOPPING/features/authentication/cubits/auth_cubit.dart';
 import 'package:SHOPPING/features/profile/cubit/profile_cubit.dart';
 import 'package:SHOPPING/features/profile/data/profileRepository/profileRepository.dart';
 import 'package:SHOPPING/features/profile/data/profilecallserver/profilecallserver.dart';
@@ -79,7 +80,7 @@ class Profilescreen extends StatelessWidget {
                       Expanded(
                           child: Container(
                         child: Padding(
-                          padding: const EdgeInsets.all(30.0),
+                          padding: const EdgeInsets.only(top: 30,left: 30,right: 30.0),
                           child: Column(
                             children: [
                               SizedBox(height: 30,),
@@ -120,7 +121,10 @@ class Profilescreen extends StatelessWidget {
                               SizedBox(height: 30,),
                                Row(
                                 children: [
-                                  Icon(Icons.logout,color:  const Color.fromARGB(255, 128, 128, 128)),SizedBox(width: 15,),
+                                  IconButton(icon: Icon(Icons.logout,color:  const Color.fromARGB(255, 128, 128, 128)), onPressed: () { 
+                                    AuthCubit.get(context).logout(context);
+                                    
+                                   },),SizedBox(width: 15,),
                                   Text("logout")
                                 ],
                               )

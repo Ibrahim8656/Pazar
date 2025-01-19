@@ -1,4 +1,5 @@
 import 'package:SHOPPING/core/models/loginmodel.dart';
+import 'package:SHOPPING/core/models/logout_model.dart';
 import 'package:SHOPPING/core/models/userRegister_model.dart';
 import 'package:SHOPPING/features/authentication/data/callservices/authetication_webservices.dart';
 
@@ -16,5 +17,10 @@ class AuthenticationRepository {
     Loginmodel loginmodel=Loginmodel.fromJson(userlogin);
     return loginmodel;
   }
+   Future<LogoutResponse> logout()async{
+    final userlogout=await autheticationWebservices.logout();
+    LogoutResponse logoutResponse=LogoutResponse.fromJson(userlogout);
+    return logoutResponse;
+   }
 
 }

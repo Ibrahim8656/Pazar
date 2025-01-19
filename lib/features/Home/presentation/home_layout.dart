@@ -1,3 +1,4 @@
+import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
@@ -38,20 +39,23 @@ class HomeLayout extends StatelessWidget {
               borderRadius: BorderRadius.circular(24.0), // Rounded corners
               child: BottomNavigationBar(
                 
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
+                items: <BottomNavigationBarItem>[
+                  const BottomNavigationBarItem(
                     icon: Icon(Icons.home),
                     label: 'Home',
                   ),
-                  BottomNavigationBarItem(
+                  const BottomNavigationBarItem(
                     icon: Icon(Icons.category),
                     label: 'category',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.shopping_cart),
+                    icon: Badge.count(
+                      count: CartCubit.get(context).cartproducts.length,
+                      backgroundColor: primarycolor,
+                      child: Icon(Icons.shopping_cart)),
                     label: 'Cart',
                   ),
-                  BottomNavigationBarItem(
+                  const BottomNavigationBarItem(
                     icon: Icon(Icons.person),
                     label: 'Profile',
                   ),

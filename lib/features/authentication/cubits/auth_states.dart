@@ -1,4 +1,5 @@
 import 'package:SHOPPING/core/models/loginmodel.dart';
+import 'package:SHOPPING/core/models/logout_model.dart';
 import 'package:SHOPPING/core/models/userRegister_model.dart';
 
 class AuthStates {}
@@ -30,4 +31,15 @@ class LoginerErrorState extends AuthStates{
   
     final Error; //you will do validiation of register on status
     LoginerErrorState(this.Error);
+}
+class LogoutLoading extends AuthStates{}
+class Logoutsuccsse extends AuthStates{
+  final LogoutResponse logoutResponse;
+
+  Logoutsuccsse(this.logoutResponse);
+}
+class LogoutError extends AuthStates{
+  final LogoutResponse logoutResponse;
+
+  LogoutError(this.logoutResponse);
 }

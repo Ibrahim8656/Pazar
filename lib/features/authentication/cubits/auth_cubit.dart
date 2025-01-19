@@ -1,6 +1,9 @@
+import 'package:SHOPPING/features/Home/presentation/splash_screen.dart';
+import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Login_screen.dart';
 import 'package:bloc/bloc.dart';
 import 'package:SHOPPING/features/authentication/cubits/auth_states.dart';
 import 'package:SHOPPING/features/authentication/data/repository/authentication_repository.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthStates>{
@@ -32,5 +35,21 @@ class AuthCubit extends Cubit<AuthStates>{
     }catch(error){
       emit(LoginerErrorState(Error));
     }
+  }
+  Future<void> logout(context)async{
+    emit(LogoutLoading());
+    try{
+      final logout=await authenticationRepository.logout();
+      if(logout.status==true){
+        print(logout.message);
+       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+      emit(Logoutsuccsse(logout));
+    }else if(logout.status ==false){
+      print(logout.message);
+      emit(LogoutError(logout));
+    }
+    } catch(error){
+      print(error.toString());
+    }   
   }
 }

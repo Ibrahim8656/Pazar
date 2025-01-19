@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
 import 'package:dio/dio.dart';
 import 'package:SHOPPING/core/Helpers/Dio_helper/dio_helper.dart';
 import 'package:http_parser/http_parser.dart';
@@ -42,4 +43,9 @@ class AutheticationWebservices {
       return {};
     }
   }
+ Future<Map<String, dynamic>> logout()async{
+ Response response = await DioHelper.postdata(Url: "logout",token: CashHelper.Getdata("token"));
+  return response.data;
+ }
+
 }

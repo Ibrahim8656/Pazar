@@ -1,5 +1,6 @@
 import 'package:SHOPPING/core/models/Homemodel.dart';
 import 'package:SHOPPING/features/Home/presentation/Search_Screen.dart';
+import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/features/favorites/presentation/screens/favorites.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
@@ -49,10 +50,14 @@ class CustomRowAppbar extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>FavoritesScreen()));
                       },
-                      icon: Icon(
-                        Icons.favorite_border,
-                        size: 30,
-                        color: primarycolor,
+                      icon: Badge.count(
+                        count: FavoritesCubit.get(context).favoriteslist.length,
+                        backgroundColor: primarycolor,
+                        child: Icon(
+                          Icons.favorite_border,
+                          size: 30,
+                          color: primarycolor,
+                        ),
                       ),
                     ),
                   ],

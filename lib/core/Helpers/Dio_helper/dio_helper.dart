@@ -22,7 +22,7 @@ class DioHelper {
   static Future<Response> postdata({
     required String Url,
     String? token,
-    required data
+     data
   }) async{
     dio.options.headers={
        'Authorization': token,

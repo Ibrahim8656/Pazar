@@ -28,7 +28,9 @@ class HomeScreen extends StatelessWidget {
                 builder: (context) => Column(
                       children: [
                         SizedBox(height: 25),
-                        CustomRowAppbar(product: HomeCubit.get(context).Allproducts,),
+                        CustomRowAppbar(
+                          product: HomeCubit.get(context).Allproducts,
+                        ),
                         Expanded(
                           child: CustomScrollView(
                             slivers: [
@@ -38,7 +40,8 @@ class HomeScreen extends StatelessWidget {
                               ),
                               SliverToBoxAdapter(
                                 child: SizedBox(
-                                  height:  MediaQuery.sizeOf(context).height*.340,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * .340,
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
                                     child: Row(
@@ -71,11 +74,15 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                               SliverToBoxAdapter(child: SizedBox(height: 20,)),
+                              SliverToBoxAdapter(
+                                  child: SizedBox(
+                                height: 20,
+                              )),
                               HomeCubit.get(context).Allproducts.isNotEmpty
                                   ? buildproductsGrid(
-                                      
-                                      Allproducts: HomeCubit.get(context).Allproducts,context: context)
+                                      Allproducts:
+                                          HomeCubit.get(context).Allproducts,
+                                      context: context)
                                   : SliverToBoxAdapter(
                                       child: Center(
                                           child:
@@ -85,8 +92,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                fallback: (context) =>
-                    Center(child: CircularProgressIndicator(
+                fallback: (context) => Center(
+                        child: CircularProgressIndicator(
                       color: primarycolor,
                     )))));
   }
