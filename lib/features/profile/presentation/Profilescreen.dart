@@ -125,7 +125,7 @@ class Profilescreen extends StatelessWidget {
                                     AuthCubit.get(context).logout(context);
                                     
                                    },),SizedBox(width: 15,),
-                                  Text("Logout")
+                                  Text("LogOut")
                                 ],
                               )
                             ],
