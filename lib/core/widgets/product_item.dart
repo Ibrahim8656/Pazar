@@ -37,7 +37,7 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                   alignment: AlignmentDirectional.topEnd,
                   children: [
                     Container(
-                        height: MediaQuery.sizeOf(context).height*.2,
+                        height: 170,
                         width: MediaQuery.sizeOf(context).width*.4,
                         child: CachedNetworkImage(
                           imageUrl: Allproducts[index].image!,

@@ -1,5 +1,6 @@
 import 'package:SHOPPING/core/widgets/Cartitem.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
+import 'package:SHOPPING/features/payment/payment_details.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
@@ -34,34 +35,39 @@ class CartScreen extends StatelessWidget {
               child: CircularProgressIndicator(color: primarycolor,),
             ),
           ),
-          bottomSheet: Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            height: MediaQuery.sizeOf(context).height*.075,
-            decoration: BoxDecoration(
-              color: primarycolor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("EGP ",style: TextStyle(color: Colors.white),),
-                  Text("${cartdata.toInt()}",style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),),Spacer(),
-                  Text(
-                    "CHECHOUT",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  Spacer(),
-                  Icon(Icons.arrow_forward,color: Colors.white,),
-                  
-                ],
+          bottomSheet: InkWell(
+            onTap: (){
+              // Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentDetails_screen()));
+            },
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              height: MediaQuery.sizeOf(context).height*.075,
+              decoration: BoxDecoration(
+                color: primarycolor,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("EGP ",style: TextStyle(color: Colors.white),),
+                    Text("${cartdata.toInt()}",style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),),Spacer(),
+                    Text(
+                      "CHECHOUT",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward,color: Colors.white,),
+                    
+                  ],
+                ),
               ),
             ),
           ),

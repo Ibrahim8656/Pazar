@@ -42,7 +42,7 @@ class CustomRowAppbar extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Center(child: Text('What are you looking for?')),
+                              Center(child: Text('What are you looking for?',style: TextStyle(fontSize: MediaQuery.sizeOf(context).width*.035),)),
                             ],
                           )),
                     ),
