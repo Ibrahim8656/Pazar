@@ -15,21 +15,22 @@ class DioHelper {
     dio.options.headers = {
       'Authorization': token,
       'lang': 'en',
+      'Content-Type':Content_Type
     };
     return dio.get(Url);
   }
 
   static Future<Response> postdata({
-    required String Url,
-    String? token,
-     data
-  }) async{
-    dio.options.headers={
-       'Authorization': token,
-      'lang': 'en',
-      'Content-Type': 'application/json',
-    };
-   return dio.post(Url,data: data );
- 
-  }
+  required String Url,
+  String? token,
+  dynamic data,
+  String? Content_Type
+}) async {
+  dio.options.headers = {
+    'Authorization': token,
+    'Content-Type': Content_Type,
+    'lang': 'en',
+  };
+  return dio.post(Url, data: data);
+}
 }

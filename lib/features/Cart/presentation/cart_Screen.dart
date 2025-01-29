@@ -1,6 +1,10 @@
 import 'package:SHOPPING/core/widgets/Cartitem.dart';
+import 'package:SHOPPING/core/widgets/checkoutbottom.dart';
+import 'package:SHOPPING/core/widgets/paymentOPtiuons.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
-import 'package:SHOPPING/features/payment/payment_details.dart';
+import 'package:SHOPPING/features/Checkout/cubit/checkout_cubit.dart';
+import 'package:SHOPPING/features/Checkout/data/PaymentRepository/paymentRepository.dart';
+import 'package:SHOPPING/features/Checkout/data/callSevrice/stripe_service.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
@@ -8,71 +12,63 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
-        bool isinfav = false;
-        final cartProduct = CartCubit.get(context).cartproducts;
-        final cartdata=CartCubit.get(context).total;
+        final cartCubit = CartCubit.get(context);
+        final cartProducts = cartCubit.cartproducts;
+        final cartTotal = cartCubit.total;
         return Scaffold(
           appBar: AppBar(
-            leading: Icon(Icons.shopping_cart,color: primarycolor,),
-            title: Text("cart"),
+            leading: Icon(
+              Icons.shopping_cart,
+              color: primarycolor,
+            ),
+            title: const Text("Cart"),
           ),
           body: ConditionalBuilder(
-            condition: cartProduct.isNotEmpty,
+            condition: cartProducts.isNotEmpty,
             builder: (context) => ListView.builder(
-                itemBuilder: (context, index) => CartItem(
-                      cartProduct: cartProduct,
-                      index: index,
-                    ),
-                itemCount: cartProduct.length),
+              itemCount: cartProducts.length,
+              itemBuilder: (context, index) => CartItem(
+                cartProduct: cartProducts,
+                index: index,
+              ),
+            ),
             fallback: (context) => Center(
-              child: CircularProgressIndicator(color: primarycolor,),
-            ),
-          ),
-          bottomSheet: InkWell(
-            onTap: (){
-              // Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentDetails_screen()));
-            },
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              height: MediaQuery.sizeOf(context).height*.075,
-              decoration: BoxDecoration(
+              child: CircularProgressIndicator(
                 color: primarycolor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("EGP ",style: TextStyle(color: Colors.white),),
-                    Text("${cartdata.toInt()}",style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),),Spacer(),
-                    Text(
-                      "CHECHOUT",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    Spacer(),
-                    Icon(Icons.arrow_forward,color: Colors.white,),
-                    
-                  ],
-                ),
               ),
             ),
           ),
+          bottomSheet: cartProducts.isNotEmpty
+              ? CheckoutBottom(
+                  cartData: cartTotal,
+                  onCheckoutPressed: () => _showPaymentOptions(context),
+                )
+              : null,
         );
       },
+    );
+  }
+
+  void _showPaymentOptions(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: BlocProvider(
+          create: (context) =>
+              CheckoutCubit(Paymentrepository(StripeService())),
+          child: const PaymentOptions(),
+        ),
+      ),
     );
   }
 }

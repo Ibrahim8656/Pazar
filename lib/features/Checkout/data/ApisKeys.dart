@@ -1,0 +1,5 @@
+class Apiskeys {
+
+    static String secretkey="sk_test_51PPJN004gJuFr1RGBW9E76cv75N46ymn7zleMyyQj9Vk9fJB5ReywIZXnUmAiXgLVH44E8dmtS2DLvyXJswsKjZy0048MZK9zM";
+     static String publishableKey="pk_test_51PPJN004gJuFr1RGMup2PJji6tNsU9cmmn0gDMwYDoXsbNYUpVfyXVOBtAFeX7o0DgZ8WSTmL9l6SEItHqYGcY4w00hFapEvo1";
+}
