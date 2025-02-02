@@ -1,5 +1,4 @@
 import 'package:SHOPPING/core/models/Categorisdetailedmodel.dart';
-import 'package:bloc/bloc.dart';
 import 'package:SHOPPING/core/models/categories_model.dart';
 import 'package:SHOPPING/features/categories/data/Repository/categories_Repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

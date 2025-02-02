@@ -1,13 +1,11 @@
 import 'package:SHOPPING/features/Cart/presentation/cart_Screen.dart';
 import 'package:SHOPPING/features/profile/presentation/Profilescreen.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/models/Homemodel.dart';
 import 'package:SHOPPING/features/Home/data/repository/home_repository.dart';
 import 'package:SHOPPING/features/Home/presentation/home_screen.dart';
 import 'package:SHOPPING/features/categories/presentation/categories_Screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {

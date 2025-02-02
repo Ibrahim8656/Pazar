@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:SHOPPING/core/models/addfaforite_model.dart';
 import 'package:SHOPPING/core/models/favorites_model.dart';
 import 'package:SHOPPING/features/favorites/data/favorites_callservice/favorites_callservice.dart';

@@ -1,6 +1,6 @@
 class Homemodel {
   bool? status;
-  Null? message;
+  Null message;
   Data? data;
 
   Homemodel({this.status, this.message, this.data});
@@ -62,7 +62,7 @@ class Banners {
   int? id;
   String? image;
   Category? category;
-  Null? product;
+  Null product;
 
   Banners({this.id, this.image, this.category, this.product});
 

@@ -26,7 +26,7 @@ Future DisplayPaymentSheet()async{
 }
  Future MakePayment({required PaymentIntentInputModell PaymentintentInpoutmodel})async{
   var paymentIntentModele=await CreatePaymentIntent(PaymentintentInpoutmodel);
-  await Initpaymentsheet(paymentIntentClientSecret: paymentIntentModele.clientSecret!);
+  await Initpaymentsheet(paymentIntentClientSecret: paymentIntentModele.clientSecret);
   await DisplayPaymentSheet();
 }
 }

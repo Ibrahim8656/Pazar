@@ -3,12 +3,11 @@ import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/Cart/data/Cart_Reposetory/Cart_Reposetory.dart';
 import 'package:SHOPPING/features/Cart/data/Cart_callservice/Cart_callservice.dart';
 import 'package:SHOPPING/features/Checkout/data/ApisKeys.dart';
-import 'package:SHOPPING/features/Home/presentation/home_layout.dart';
 import 'package:SHOPPING/features/Home/presentation/splash_screen.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/features/favorites/data/favorites_callservice/favorites_callservice.dart';
 import 'package:SHOPPING/features/favorites/data/favorites_repository/favorites_repository.dart';
-import 'package:SHOPPING/features/Checkout/presentation/payment_details.dart';
+import 'package:SHOPPING/features/location/presentation/location_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:SHOPPING/core/Helpers/Dio_helper/dio_helper.dart';
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:SplashScreen(),
+        home:LocationScreen(),
       ),
     );
   }

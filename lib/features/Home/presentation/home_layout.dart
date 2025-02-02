@@ -2,8 +2,6 @@ import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
-import 'package:SHOPPING/features/Home/data/callservices/Home_callservice.dart';
-import 'package:SHOPPING/features/Home/data/repository/home_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeLayout extends StatelessWidget {

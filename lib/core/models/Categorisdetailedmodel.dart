@@ -2,7 +2,7 @@ import 'package:SHOPPING/core/models/Homemodel.dart';
 
 class Categorisdetailedmodel {
   bool? status;
-  Null? message;
+  Null message;
   Data? data;
 
   Categorisdetailedmodel({this.status, this.message, this.data});
@@ -31,10 +31,10 @@ class Data{
   int? from;
   int? lastPage;
   String? lastPageUrl;
-  Null? nextPageUrl;
+  Null nextPageUrl;
   String? path;
   int? perPage;
-  Null? prevPageUrl;
+  Null prevPageUrl;
   int? to;
   int? total;
 

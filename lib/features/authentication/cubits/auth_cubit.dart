@@ -1,6 +1,4 @@
-import 'package:SHOPPING/features/Home/presentation/splash_screen.dart';
 import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Login_screen.dart';
-import 'package:bloc/bloc.dart';
 import 'package:SHOPPING/features/authentication/cubits/auth_states.dart';
 import 'package:SHOPPING/features/authentication/data/repository/authentication_repository.dart';
 import 'package:flutter/material.dart';

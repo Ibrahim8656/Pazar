@@ -47,7 +47,7 @@ class _DetailedFavoritesScreens extends State<DetailedFavoritesScreens> {
             child: Container(
               padding: EdgeInsets.all( 25),
               child: CachedNetworkImage(
-                 imageUrl: widget.product.image!,
+                 imageUrl: widget.product.image,
                  placeholder: (context, url) =>
                      Image.asset("assets/images/loaddd.jpg"),
                  fit: BoxFit.contain,
@@ -93,7 +93,7 @@ class _DetailedFavoritesScreens extends State<DetailedFavoritesScreens> {
                         Spacer(),
                         InkWell(onTap: (){
                            CartCubit.get(context).AddAndRemoveCart(
-                              widget.product.id!, context);
+                              widget.product.id, context);
                         },
                           child: Container(height:  60,
                           width: MediaQuery.sizeOf(context).width*.55,

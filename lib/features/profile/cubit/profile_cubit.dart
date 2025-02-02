@@ -1,7 +1,5 @@
-import 'dart:ui';
 import 'package:SHOPPING/core/models/profilemodel.dart';
 import 'package:SHOPPING/features/profile/data/profileRepository/profileRepository.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 part 'profile_state.dart';

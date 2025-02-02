@@ -1,8 +1,6 @@
-import 'dart:io';
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
 import 'package:dio/dio.dart';
 import 'package:SHOPPING/core/Helpers/Dio_helper/dio_helper.dart';
-import 'package:http_parser/http_parser.dart';
 
 class AutheticationWebservices {
   Future<Map<String, dynamic>> Register({

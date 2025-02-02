@@ -1,9 +1,7 @@
-import 'package:SHOPPING/core/models/Categorisdetailedmodel.dart';
 import 'package:SHOPPING/core/models/Homemodel.dart';
 import 'package:SHOPPING/core/widgets/product_grid.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
 import 'package:SHOPPING/features/categories/cubit/categories_cubit.dart';
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';

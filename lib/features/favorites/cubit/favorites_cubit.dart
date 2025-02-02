@@ -1,15 +1,12 @@
-import 'dart:ui';
 
 import 'package:SHOPPING/core/methods/showsnackbaar.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
-import 'package:bloc/bloc.dart';
 import 'package:SHOPPING/core/models/addfaforite_model.dart';
 import 'package:SHOPPING/core/models/favorites_model.dart';
 import 'package:SHOPPING/features/favorites/data/favorites_repository/favorites_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'favorites_state.dart';
 
