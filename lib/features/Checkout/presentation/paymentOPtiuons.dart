@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PaymentOptions extends StatelessWidget {
-  const PaymentOptions({super.key});
-
+  const PaymentOptions({super.key, required this.Total});
+final double Total;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +32,7 @@ class PaymentOptions extends StatelessWidget {
     listener: (context, state) {
       if (state is CheckoutSuccess) {
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => const successscreen()
+          builder: (context) =>  successscreen(Total: Total,)
         ));
       } else if (state is CheckoutError) {
         Navigator.of(context).pop();

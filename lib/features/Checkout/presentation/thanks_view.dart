@@ -1,12 +1,17 @@
 
+import 'dart:ffi';
 
 import 'package:SHOPPING/core/widgets/payment_info.dart';
+import 'package:SHOPPING/features/Checkout/widgets/cart_info_item.dart';
+import 'package:SHOPPING/features/Checkout/widgets/total_price_widget.dart';
+import 'package:SHOPPING/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({
-    super.key,
+    super.key, required this.Total,
   });
+  final double Total;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +30,12 @@ class ThankYouCard extends StatelessWidget {
             const Text(
               'Thank you!',
               textAlign: TextAlign.center,
-             
+              style: Styles.style25,
             ),
             Text(
               'Your transaction was successful',
               textAlign: TextAlign.center,
-         
+              style: Styles.style20,
             ),
             const SizedBox(
               height: 42,
@@ -57,9 +62,11 @@ class ThankYouCard extends StatelessWidget {
               height: 60,
               thickness: 2,
             ),
+             TotalPrice(title: 'Total', value:Total),
             const SizedBox(
               height: 30,
             ),
+            const CardInfoWidget(),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,7 +81,7 @@ class ThankYouCard extends StatelessWidget {
                   decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
-                          width: 1.50, color: Color(0xFF34A853)),
+                          width: 2, color: Color(0xFF34A853)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
@@ -82,7 +89,8 @@ class ThankYouCard extends StatelessWidget {
                     child: Text(
                       'PAID',
                       textAlign: TextAlign.center,
-                   
+                      style: Styles.style24
+                          .copyWith(color: const Color(0xff34A853)),
                     ),
                   ),
                 )

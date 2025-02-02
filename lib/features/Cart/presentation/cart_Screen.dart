@@ -1,10 +1,10 @@
 import 'package:SHOPPING/core/widgets/Cartitem.dart';
 import 'package:SHOPPING/core/widgets/checkoutbottom.dart';
-import 'package:SHOPPING/core/widgets/paymentOPtiuons.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/Checkout/cubit/checkout_cubit.dart';
 import 'package:SHOPPING/features/Checkout/data/PaymentRepository/paymentRepository.dart';
 import 'package:SHOPPING/features/Checkout/data/callSevrice/stripe_service.dart';
+import 'package:SHOPPING/features/Checkout/presentation/paymentOPtiuons.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class CartScreen extends StatelessWidget {
           bottomSheet: cartProducts.isNotEmpty
               ? CheckoutBottom(
                   cartData: cartTotal,
-                  onCheckoutPressed: () => _showPaymentOptions(context),
+                  onCheckoutPressed: () => _showPaymentOptions(context,cartTotal),
                 )
               : null,
         );
@@ -55,7 +55,7 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  void _showPaymentOptions(BuildContext context) {
+  void _showPaymentOptions(BuildContext context,double Total) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -66,7 +66,7 @@ class CartScreen extends StatelessWidget {
         child: BlocProvider(
           create: (context) =>
               CheckoutCubit(Paymentrepository(StripeService())),
-          child: const PaymentOptions(),
+          child:  PaymentOptions(Total: Total,),
         ),
       ),
     );
