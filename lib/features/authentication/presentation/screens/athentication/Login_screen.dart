@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
           }
         }
         if(state is LoginwthierrorState){
-           showSnackbar(context: context, message: "Rowng Email or passowrd ! ", color: Colors.red);
+           showSnackbar(context: context, message: "Rowng Email or passowrd! ", color: Colors.red);
         }
       },
       builder: (BuildContext context, AuthStates state) {

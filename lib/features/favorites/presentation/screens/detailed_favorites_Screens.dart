@@ -18,7 +18,6 @@ import 'package:SHOPPING/core/models/favorites_model.dart';
 }
 
 class _DetailedFavoritesScreens extends State<DetailedFavoritesScreens> {
-  int _currentIndex = 0; // To track the active image index
 
   @override
   Widget build(BuildContext context) {
