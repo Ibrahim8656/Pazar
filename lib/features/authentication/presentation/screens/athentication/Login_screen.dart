@@ -12,7 +12,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 
 class LoginScreen extends StatelessWidget {
   @override
-  var formKey = GlobalKey<FormState>();
+  final  formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override

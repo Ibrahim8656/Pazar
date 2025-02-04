@@ -8,7 +8,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 
 class Register extends StatelessWidget {
   @override
-  var formKey = GlobalKey<FormState>();
+  final  formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController nameController = TextEditingController();

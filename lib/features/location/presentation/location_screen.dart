@@ -16,14 +16,11 @@ class _LocationScreenState extends State<LocationScreen> {
   final Set<Marker> _markers = {};
   LatLng? _selectedLocation;
   String _locationString = "No location selected";
-
-  // Initial Cairo position
   static const LatLng _initialPosition = LatLng(30.033333, 31.233334);
 
   @override
   void initState() {
     super.initState();
-    // Add initial marker
     _markers.add(
       const Marker(
         markerId: MarkerId("initial"),
@@ -41,8 +38,6 @@ class _LocationScreenState extends State<LocationScreen> {
     setState(() {
       _selectedLocation = location;
       _locationString = "${location.latitude}, ${location.longitude}";
-      
-      // Clear existing markers and add new one
       _markers.clear();
       _markers.add(
         Marker(
@@ -52,9 +47,6 @@ class _LocationScreenState extends State<LocationScreen> {
         ),
       );
     });
-
-    // You can use the location string here or anywhere else
-    print("Selected location: $_locationString");
   }
 
   @override

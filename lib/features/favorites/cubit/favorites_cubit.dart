@@ -1,13 +1,10 @@
 
-import 'dart:isolate';
 
 import 'package:SHOPPING/core/methods/showsnackbaar.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
-import 'package:SHOPPING/core/models/addfaforite_model.dart';
 import 'package:SHOPPING/core/models/favorites_model.dart';
 import 'package:SHOPPING/features/favorites/data/favorites_repository/favorites_repository.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,14 +43,6 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     }
 
 }
-// Future<void>AddAndRemoveFavoriteisolate(String token,int ProductID,context)async{
-//    emit(CahngingFavoritesLoadingState()); 
-//    try{
-//     await Isolate.run(()=>AddAndRemoveFavorite( token, ProductID,context) );
-//     emit(CahngingFavoritesSuccessState());
-//    }catch (error){
-//       emit(CahngingFavoritesErrorState(error.toString()));
-//     }
-// }
+
 
 }
