@@ -14,7 +14,6 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   late GoogleMapController mapController;
   final Set<Marker> _markers = {};
-  LatLng? _selectedLocation;
   String _locationString = "No location selected";
   static const LatLng _initialPosition = LatLng(30.033333, 31.233334);
 
@@ -36,7 +35,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void _onMapTapped(LatLng location) {
     setState(() {
-      _selectedLocation = location;
+   
       _locationString = "${location.latitude}, ${location.longitude}";
       _markers.clear();
       _markers.add(

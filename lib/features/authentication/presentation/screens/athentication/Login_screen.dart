@@ -10,35 +10,45 @@ import 'package:SHOPPING/features/authentication/presentation/screens/athenticat
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  final  formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthStates>(
-      listener: (BuildContext context, AuthStates state) {
-        if (state is LoginsuccessState ) {
-          if(state.Response.data!.token !=null){
+      listener: (context, state) {
+        if (state is LoginsuccessState) {
+          if (state.Response.data!.token != null) {
             Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomeLayout(),
-            ),
-          );
-          showSnackbar(context: context, message: state.Response.message!, color: Colors.green);
-          CashHelper.SaveData("token", state.Response.data!.token);
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeLayout(),
+              ),
+            );
+            showSnackbar(
+                context: context,
+                message: state.Response.message!,
+                color: Colors.green);
+            CashHelper.SaveData("token", state.Response.data!.token);
           }
         }
-        if(state is LoginwthierrorState){
-           showSnackbar(context: context, message: "Rowng Email or passowrd! ", color: Colors.red);
+        if (state is LoginwthierrorState) {
+          showSnackbar(
+              context: context,
+              message: "Wrong Email or Password!",
+              color: Colors.red);
         }
       },
-      builder: (BuildContext context, AuthStates state) {
+      builder: (context, state) {
         return Scaffold(
-          backgroundColor:
-          primarycolor,
+          backgroundColor: primarycolor,
           body: Column(
             children: [
               Expanded(
@@ -65,8 +75,7 @@ class LoginScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                   child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 50, left: 20, right: 20),
+                    padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
                     child: SingleChildScrollView(
                       child: Form(
                         key: formKey,
@@ -76,9 +85,10 @@ class LoginScreen extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                InkWell(onTap: (){
-                                  print(CashHelper.Getdata("token"));
-                                },
+                                InkWell(
+                                  onTap: () {
+                                    print(CashHelper.Getdata("token"));
+                                  },
                                   child: Text(
                                     'Login',
                                     style: TextStyle(
@@ -122,19 +132,33 @@ class LoginScreen extends StatelessWidget {
                                               password: passwordController.text);
                                         }
                                       },
-                                      child: Center(child: Text('LOGIN',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16))),
+                                      child: Center(
+                                          child: Text('LOGIN',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16))),
                                     ),
                                   ),
                                   fallback: (context) => Center(
-                                    child: CircularProgressIndicator(color: primarycolor,),
+                                    child: CircularProgressIndicator(
+                                      color: primarycolor,
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
                             SizedBox(height: 30),
-                            TextButton(onPressed: (){
-                              Navigator.push(context,MaterialPageRoute(builder: (context)=>Register()),);
-                            }, child: Text("Create New Account ?"),)
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Register()),
+                                );
+                              },
+                              child: Text("Create New Account ?"),
+                            )
                           ],
                         ),
                       ),
@@ -149,6 +173,8 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
+
 TextFormField Textformfild(String validatemessage, String hintText,
     TextEditingController controller, bool obscurstatus) {
   return TextFormField(

@@ -6,13 +6,23 @@ import 'package:SHOPPING/features/authentication/presentation/screens/athenticat
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   @override
-  final  formKey = GlobalKey<FormState>();
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+   final  formKey = GlobalKey<FormState>();
+   
   TextEditingController emailController = TextEditingController();
+
   TextEditingController phoneController = TextEditingController();
+
   TextEditingController nameController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+ 
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,4 @@
 
-import 'package:SHOPPING/features/Cart/presentation/cart_Screen.dart';
 import 'package:SHOPPING/features/Checkout/widgets/thank_you_view_body.dart';
 import 'package:SHOPPING/features/Home/presentation/home_layout.dart';
 import 'package:flutter/material.dart';
