@@ -17,9 +17,9 @@ final class FavoritesErrorState extends FavoritesState {
 }
 final class CahngingFavoritesLoadingState extends FavoritesState {}
 final class CahngingFavoritesSuccessState extends FavoritesState {
-  final AddfaforiteModel addfaforiteModel;
+ // final AddfaforiteModel addfaforiteModel;
 
-  CahngingFavoritesSuccessState(this.addfaforiteModel);
+  CahngingFavoritesSuccessState();
 }
 final class CahngingFavoritesErrorState extends FavoritesState {
   final String Error;

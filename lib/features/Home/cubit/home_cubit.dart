@@ -17,37 +17,41 @@ class HomeCubit extends Cubit<HomeState> {
   List<Widget> Screens = [
     HomeScreen(),
     CategoriesScreen(),
-    CartScreen(),
+    CartScreen(
+      Address: '',
+    ),
     Profilescreen()
   ];
 
-  List <String>AppBarTitle=["Products","Categories","favorites"];
+  List<String> AppBarTitle = ["Products", "Categories", "favorites"];
   void ontaponbottomnavigationbar(int index) {
     currentIndex = index; // Update the currentIndex
-    emit(HomeCurrentIndexChangedState()); 
-    
-  }
-bool isDataLoaded=false;
-List<Banners>? data=[];
-List<Products>Allproducts=[];
-Future<void> GetHomedata() async {
-   if (isDataLoaded) {
-      return; // if data is already loaded, do nothing
-    }
-  emit(HomeDataLoadingState());
-  try {
-    final homedata = await homeRepository.GetHomedata();
-     data= await homedata.data!.banners;
-     Allproducts=await homedata.data!.products ??[];
-    emit(HomeDataSuccessState(homemodel: homedata));
-  } catch (error) {
-    emit(HomeDataErrorState(Error: error.toString()));
-  }
-}
-   List<Products>SearchProductList=[];
-  Search(String Searchedname){
-    SearchProductList=Allproducts.where((product)=>product.name!.toLowerCase().startsWith(Searchedname)).toList();
-    emit(shearshingState());
+    emit(HomeCurrentIndexChangedState());
   }
 
+  bool isDataLoaded = false;
+  List<Banners>? data = [];
+  List<Products> Allproducts = [];
+  Future<void> GetHomedata() async {
+    if (isDataLoaded) {
+      return; // if data is already loaded, do nothing
+    }
+    emit(HomeDataLoadingState());
+    try {
+      final homedata = await homeRepository.GetHomedata();
+      data = await homedata.data!.banners;
+      Allproducts = await homedata.data!.products ?? [];
+      emit(HomeDataSuccessState(homemodel: homedata));
+    } catch (error) {
+      emit(HomeDataErrorState(Error: error.toString()));
+    }
+  }
+
+  List<Products> SearchProductList = [];
+  Search(String Searchedname) {
+    SearchProductList = Allproducts.where(
+            (product) => product.name!.toLowerCase().startsWith(Searchedname))
+        .toList();
+    emit(shearshingState());
+  }
 }

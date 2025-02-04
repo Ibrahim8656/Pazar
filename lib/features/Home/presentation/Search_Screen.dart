@@ -1,4 +1,5 @@
 import 'package:SHOPPING/core/models/Homemodel.dart';
+import 'package:SHOPPING/core/widgets/CustomTextformfild.dart';
 import 'package:SHOPPING/core/widgets/product_item.dart';
 import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
@@ -27,28 +28,7 @@ class Search extends StatelessWidget {
                 SizedBox(
                   height: 8,
                 ),
-             TextField(
-  decoration: InputDecoration(
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(color: primarycolor, width: 2.0),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(color: Colors.grey, width: 1.0),
-    ),
-    hintText: "What are you looking for?",
-    fillColor: const Color.fromARGB(255, 245, 245, 245),
-    filled: true,
-  ),
-  controller: searchedPrudect,
-  onChanged: (searchedPrudect) {
-    HomeCubit.get(context).Search(searchedPrudect);
-  },
-),
+             TextFormFieldWidget(searchedPrudect: searchedPrudect),
   State is! shearshingState
                     ? Expanded(
                         child: ListView.separated(
@@ -75,3 +55,4 @@ class Search extends StatelessWidget {
     );
   }
 }
+

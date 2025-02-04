@@ -1,18 +1,18 @@
+
+import 'package:SHOPPING/core/methods/showPayment_options.dart';
+import 'package:SHOPPING/core/methods/showsnackbaar.dart';
+import 'package:SHOPPING/core/widgets/AddingAddressWidget.dart';
 import 'package:SHOPPING/core/widgets/Cartitem.dart';
 import 'package:SHOPPING/core/widgets/checkoutbottom.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
-import 'package:SHOPPING/features/Checkout/cubit/checkout_cubit.dart';
-import 'package:SHOPPING/features/Checkout/data/PaymentRepository/paymentRepository.dart';
-import 'package:SHOPPING/features/Checkout/data/callSevrice/stripe_service.dart';
-import 'package:SHOPPING/features/Checkout/presentation/paymentOPtiuons.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
-
+  const CartScreen({super.key, required this.Address});
+  final String Address;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(
@@ -29,25 +29,34 @@ class CartScreen extends StatelessWidget {
             ),
             title: const Text("Cart"),
           ),
-          body: ConditionalBuilder(
-            condition: cartProducts.isNotEmpty,
-            builder: (context) => ListView.builder(
-              itemCount: cartProducts.length,
-              itemBuilder: (context, index) => CartItem(
-                cartProduct: cartProducts,
-                index: index,
+          body: Column(children: [
+            AddingAddressWidget(Address: Address,),
+            ConditionalBuilder(
+              condition: cartProducts.isNotEmpty,
+              builder: (context) => Expanded(
+                child: ListView.builder(
+                  itemCount: cartProducts.length,
+                  itemBuilder: (context, index) => CartItem(
+                    cartProduct: cartProducts,
+                    index: index,
+                  ),
+                ),
+              ),
+              fallback: (context) => Center(
+                child: CircularProgressIndicator(
+                  color: primarycolor,
+                ),
               ),
             ),
-            fallback: (context) => Center(
-              child: CircularProgressIndicator(
-                color: primarycolor,
-              ),
-            ),
-          ),
+          ]),
           bottomSheet: cartProducts.isNotEmpty
               ? CheckoutBottom(
                   cartData: cartTotal,
-                  onCheckoutPressed: () => _showPaymentOptions(context,cartTotal),
+                  onCheckoutPressed: () {
+                    Address==''?showSnackbar(context: context, message: "plase Add your location", color: Colors.grey):
+                    showPaymentOptions(context, cartTotal);
+                  }
+                      
                 )
               : null,
         );
@@ -55,20 +64,5 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  void _showPaymentOptions(BuildContext context,double Total) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) => Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: BlocProvider(
-          create: (context) =>
-              CheckoutCubit(Paymentrepository(StripeService())),
-          child:  PaymentOptions(Total: Total,),
-        ),
-      ),
-    );
-  }
+  
 }
