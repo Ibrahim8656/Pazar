@@ -1,22 +1,24 @@
-import 'package:SHOPPING/core/models/Homemodel.dart';
+import 'package:SHOPPING/core/methods/showShoppingBottomsheet.dart';
+import 'package:SHOPPING/core/models/cart_model.dart';
 import 'package:SHOPPING/core/widgets/productdata.dart';
+import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class DetailedScreen extends StatefulWidget {
-  const DetailedScreen({
+class DetailedScreenCart extends StatefulWidget {
+  const DetailedScreenCart({
     super.key,
     required this.product,
   });
-  final Products product;
+  final CartItems product;
 
   @override
-  State<DetailedScreen> createState() => _DetailedScreenState();
+  State<DetailedScreenCart> createState() => _DetailedScreenCart();
 }
 
-class _DetailedScreenState extends State<DetailedScreen> {
+class _DetailedScreenCart extends State<DetailedScreenCart> {
   int _currentIndex = 0; // To track the active image index
 
   @override
@@ -49,8 +51,8 @@ class _DetailedScreenState extends State<DetailedScreen> {
                 children: [
                   // Carousel Slider
                   CarouselSlider(
-                    items: widget.product.images != null
-                        ? widget.product.images!
+                    items: widget.product.product.images != null
+                        ? widget.product.product.images!
                             .map(
                               (e) => CachedNetworkImage(
                                 imageUrl: "$e",
@@ -79,9 +81,9 @@ class _DetailedScreenState extends State<DetailedScreen> {
                   SizedBox(height: 15,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: widget.product.images != null
+                    children: widget.product.product.images != null
                         ? List.generate(
-                            widget.product.images!.length,
+                            widget.product.product.images!.length,
                             (index) => AnimatedContainer(
                               duration: Duration(milliseconds: 300),
                               margin: EdgeInsets.symmetric(horizontal: 4),
@@ -102,7 +104,73 @@ class _DetailedScreenState extends State<DetailedScreen> {
               ),
             ),
           ),
-           productdata(widget: widget)
+          Container(
+     width: double.infinity,
+           decoration: BoxDecoration(
+             color: Colors.white,
+             boxShadow: [
+               BoxShadow(
+                 color: Colors.grey,
+                 blurRadius: 5,
+                 
+               )
+             ],
+             borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
+           ),
+           child: Padding(
+             padding: const EdgeInsets.all( 25),
+             child: SingleChildScrollView(
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                 Text("${widget.product.product.name}",style: TextStyle(
+                   fontSize: 20,fontWeight: FontWeight.bold,
+                 ),maxLines: 2,),
+                 SizedBox(height: 15,),
+                 Text("description",style: TextStyle(
+                   fontSize: 20,fontWeight: FontWeight.bold,
+                 )),
+                 Text("${widget.product.product.description}",maxLines: 9,style: TextStyle(
+                   fontSize: 14,fontWeight: FontWeight.bold,
+                 ),),
+                SizedBox(height: 30,),
+                Row(children: [
+                 Text("EGP"),
+                  Text("${widget.product.product.price}",style: TextStyle(
+                   fontSize: 18,fontWeight: FontWeight.bold,
+                 ),),
+                 Spacer(),
+                 InkWell(onTap: (){
+                    CartCubit.get(context).AddAndRemoveCart(
+                       widget.product.id!, context);
+                       
+                       widget.product.product.inCart?showBottpmsheet(context,widget.product):null;
+                 },
+                   child: Container(height:  60,
+                   width: MediaQuery.sizeOf(context).width*.55,
+                   child: Center(
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                       Icon(Icons.shopping_bag,color: Colors.white,size: 26,),
+                       SizedBox(width: 10,),
+                       Text( "Add to cart",style: TextStyle(
+                         color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20
+                       ),)
+                     ],),
+                   ),
+                   decoration: BoxDecoration(
+                     color: primarycolor,
+                     borderRadius: BorderRadius.circular(30)
+                   ),),
+                 )
+                ],)
+    
+                 
+               ],),
+             ),
+           ),
+         )
          ,
         
         ],

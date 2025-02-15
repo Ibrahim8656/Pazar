@@ -18,6 +18,7 @@ class CartCubit extends Cubit<CartState> {
     try {
       final response = await cartReposetory.GetCart();
       cartproducts = response.data.cartItems;
+
       total=response.data.total;
       print(total);
       emit(

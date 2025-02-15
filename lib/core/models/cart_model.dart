@@ -54,6 +54,7 @@ class Product {
   final List<String> images;
   final bool inFavorites;
   final bool inCart;
+  
 
   Product({
     required this.id,

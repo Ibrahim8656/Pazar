@@ -16,7 +16,7 @@ class CategorisdetailesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Category Details"),
+        title: const Text(""),
       ),
       body: BlocBuilder<CategoriesCubit, CategoriesState>(
         builder: (context, state) {

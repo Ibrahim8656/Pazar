@@ -39,28 +39,24 @@ class HomeScreen extends StatelessWidget {
                                     HomeCubit.get(context).data),
                               ),
                               SliverToBoxAdapter(
-                                child: SizedBox(
-                                  height:
-                                      MediaQuery.sizeOf(context).height * .340,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                            child: ProductItem(
-                                                HomeCubit.get(context)
-                                                    .Allproducts,
-                                                5,
-                                                context)),
-                                        SizedBox(width: 20),
-                                        Expanded(
-                                            child: ProductItem(
-                                                HomeCubit.get(context)
-                                                    .Allproducts,
-                                                4,
-                                                context)),
-                                      ],
-                                    ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                          child: ProductItem(
+                                              HomeCubit.get(context)
+                                                  .Allproducts,
+                                              5,
+                                              context)),
+                                      SizedBox(width: 20),
+                                      Expanded(
+                                          child: ProductItem(
+                                              HomeCubit.get(context)
+                                                  .Allproducts,
+                                              4,
+                                              context)),
+                                    ],
                                   ),
                                 ),
                               ),
