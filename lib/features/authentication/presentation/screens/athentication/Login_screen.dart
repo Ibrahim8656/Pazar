@@ -1,5 +1,6 @@
 
 import 'package:SHOPPING/core/methods/showsnackbaar.dart';
+import 'package:SHOPPING/core/widgets/custoumTextformfild.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
@@ -90,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     print(CashHelper.Getdata("token"));
                                   },
                                   child: Text(
-                                    'Login',
+                                    'PAZAR',
                                     style: TextStyle(
                                       fontSize: 40,
                                       fontWeight: FontWeight.bold,
@@ -101,11 +102,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             SizedBox(height: 100),
                             Text(
-                              'Login',
+                              ' Login',
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: 20),
                             Textformfild(
                                 'Enter email', 'Email', emailController, false),
                             SizedBox(height: 40),
@@ -175,19 +176,6 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 
-TextFormField Textformfild(String validatemessage, String hintText,
-    TextEditingController controller, bool obscurstatus) {
-  return TextFormField(
-    validator: (value) {
-      if (value!.isEmpty) {
-        return validatemessage;
-      }
-      return null;
-    },
-    controller: controller,
-    decoration: InputDecoration(hintText: hintText),
-    obscureText: obscurstatus,
-  );
-}
+
 
 

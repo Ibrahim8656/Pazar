@@ -1,3 +1,4 @@
+import 'package:SHOPPING/core/widgets/custoumTextformfild.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/features/authentication/cubits/auth_cubit.dart';
@@ -161,20 +162,7 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  TextFormField Textformfild(
-      String validatemessage, String hintText, TextEditingController controller, bool obscurstatus) {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return validatemessage;
-        }
-        return null;
-      },
-      controller: controller,
-      decoration: InputDecoration(hintText: hintText),
-      obscureText: obscurstatus,
-    );
-  }
+  
 
   void showSnackbar({required BuildContext context, required String message, required Color color}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message), backgroundColor: color));

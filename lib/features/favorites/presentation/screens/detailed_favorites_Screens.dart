@@ -3,10 +3,10 @@ import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:SHOPPING/core/models/favorites_model.dart';
 
+import '../../../../core/models/favorites_model.dart';
 
-  class DetailedFavoritesScreens extends StatefulWidget {
+class DetailedFavoritesScreens extends StatefulWidget {
   const DetailedFavoritesScreens({
     super.key,
     required this.product,

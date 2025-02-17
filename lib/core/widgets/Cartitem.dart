@@ -1,10 +1,9 @@
+
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
 import 'package:SHOPPING/core/models/cart_model.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/features/Cart/presentation/detailedScreen.dart';
-import 'package:SHOPPING/features/Home/presentation/DetailedScreen.dart';
 import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
-import 'package:SHOPPING/features/favorites/presentation/screens/detailed_favorites_Screens.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

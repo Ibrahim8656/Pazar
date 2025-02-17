@@ -1,6 +1,5 @@
 import 'package:SHOPPING/core/methods/showShoppingBottomsheet.dart';
 import 'package:SHOPPING/core/models/cart_model.dart';
-import 'package:SHOPPING/core/widgets/productdata.dart';
 import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -51,8 +50,8 @@ class _DetailedScreenCart extends State<DetailedScreenCart> {
                 children: [
                   // Carousel Slider
                   CarouselSlider(
-                    items: widget.product.product.images != null
-                        ? widget.product.product.images!
+                    items: widget.product.product.images != false
+                        ? widget.product.product.images
                             .map(
                               (e) => CachedNetworkImage(
                                 imageUrl: "$e",
@@ -81,9 +80,9 @@ class _DetailedScreenCart extends State<DetailedScreenCart> {
                   SizedBox(height: 15,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: widget.product.product.images != null
+                    children: widget.product.product.images != false
                         ? List.generate(
-                            widget.product.product.images!.length,
+                            widget.product.product.images.length,
                             (index) => AnimatedContainer(
                               duration: Duration(milliseconds: 300),
                               margin: EdgeInsets.symmetric(horizontal: 4),
@@ -142,7 +141,7 @@ class _DetailedScreenCart extends State<DetailedScreenCart> {
                  Spacer(),
                  InkWell(onTap: (){
                     CartCubit.get(context).AddAndRemoveCart(
-                       widget.product.id!, context);
+                       widget.product.id, context);
                        
                        widget.product.product.inCart?showBottpmsheet(context,widget.product):null;
                  },
