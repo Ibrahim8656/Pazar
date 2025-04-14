@@ -154,7 +154,7 @@ class _DetailedScreenCart extends State<DetailedScreenCart> {
                        children: [
                        Icon(Icons.shopping_bag,color: Colors.white,size: 26,),
                        SizedBox(width: 10,),
-                       Text( "Add to cart",style: TextStyle(
+                       Text( "Add to Cart",style: TextStyle(
                          color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20
                        ),)
                      ],),
