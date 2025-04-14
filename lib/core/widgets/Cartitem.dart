@@ -1,9 +1,9 @@
 
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
 import 'package:SHOPPING/core/models/cart_model.dart';
-import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
-import 'package:SHOPPING/features/Cart/presentation/detailedScreen.dart';
-import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
+import 'package:SHOPPING/features/Cart/presentation/cubit/cart_cubit.dart';
+import 'package:SHOPPING/features/Cart/presentation/screens/detailedScreen.dart';
+import 'package:SHOPPING/features/favorites/presentation/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -145,7 +145,7 @@ class CartItem extends StatelessWidget {
                             FavoritesCubit.get(context).AddAndRemoveFavorite(
                                 CashHelper.Getdata("token"),
                                 cartProduct[index].product.id,
-                                context);
+                                context,cartProduct[index].product.inFavorites);
                           },
                           child: Text(
                             cartProduct[index].product.inFavorites

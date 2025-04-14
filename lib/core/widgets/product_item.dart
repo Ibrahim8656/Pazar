@@ -1,16 +1,17 @@
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
-import 'package:SHOPPING/features/Cart/cubit/cart_cubit.dart';
-import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
-import 'package:SHOPPING/features/Home/presentation/DetailedScreen.dart';
-import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
+import 'package:SHOPPING/features/Cart/presentation/cubit/cart_cubit.dart';
+import 'package:SHOPPING/features/Home/presentation/cubit/home_cubit.dart';
+import 'package:SHOPPING/features/Home/presentation/screens/DetailedScreen.dart';
+import 'package:SHOPPING/features/favorites/presentation/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/models/Homemodel.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-Container ProductItem(List<Products> Allproducts, int index, context) {
+Container ProductItem(Products Allproducts, int index, context) {
   return Container(
-    height: MediaQuery.sizeOf(context).height*.3,
+    height: MediaQuery.sizeOf(context).height * .3,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
     ),
@@ -19,8 +20,8 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => DetailedScreen(
-                      product: Allproducts[index],
+                builder: (context) => Detailedscreen(
+                      product: Allproducts, index: index,
                     )));
       },
       child: Container(
@@ -40,10 +41,10 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                       alignment: AlignmentDirectional.topEnd,
                       children: [
                         Container(
-                            height: MediaQuery.sizeOf(context).height*.250,
-                            width: MediaQuery.sizeOf(context).width*.4,
+                            height: MediaQuery.sizeOf(context).height * .250,
+                            width: MediaQuery.sizeOf(context).width * .4,
                             child: CachedNetworkImage(
-                              imageUrl: Allproducts[index].image!,
+                              imageUrl: Allproducts.image!,
                               placeholder: (context, url) =>
                                   Image.asset("assets/images/loaddd.jpg"),
                               fit: BoxFit.fill,
@@ -64,36 +65,40 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                                     borderRadius: BorderRadius.circular(10)),
                                 height: 24,
                                 width: 24,
-                                child: IconButton(
-                                  onPressed: () {
-                                    FavoritesCubit.get(context)
-                                        .AddAndRemoveFavorite(
-                                            CashHelper.Getdata('token'),
-                                            Allproducts[index].id!,
-                                            context);
+                                child: BlocBuilder<HomeCubit, HomeState>(
+                                  builder: (context, state) {
+                                    return IconButton(
+                                      onPressed: () {
+                                        FavoritesCubit.get(context)
+                                            .AddAndRemoveFavorite(
+                                                CashHelper.Getdata('token'),
+                                                Allproducts.id!,
+                                                context,Allproducts.inFavorites!);
+                                      },
+                                      icon: Icon(
+                                        Icons.favorite_sharp,
+                                        color: (HomeCubit.get(context)
+                                                    .Allproducts[index]
+                                                    .inFavorites ==
+                                                true)
+                                            ? primarycolor
+                                            : Colors.grey,
+                                      ),
+                                      color: Colors.white,
+                                      iconSize: 20,
+                                      padding: EdgeInsets.all(0),
+                                    );
                                   },
-                                  icon: Icon(
-                                    Icons.favorite_sharp,
-                                    color: HomeCubit.get(context)
-                                                .Allproducts[index]
-                                                .inFavorites ==
-                                            true
-                                        ? primarycolor
-                                        : Colors.grey,
-                                  ),
-                                  color: Colors.white,
-                                  iconSize: 20,
-                                  padding: EdgeInsets.all(0),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: MediaQuery.sizeOf(context).height*.130,
+                              height: MediaQuery.sizeOf(context).height * .130,
                             ),
                             GestureDetector(
                               onTap: () {
                                 CartCubit.get(context).AddAndRemoveCart(
-                                    Allproducts[index].id!, context);
+                                    Allproducts.id!, context);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -110,7 +115,7 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                                 child: Center(
                                   child: Icon(
                                     Icons.shopping_cart,
-                                    color: Allproducts[index].inCart!
+                                    color: Allproducts.inCart!
                                         ? primarycolor
                                         : Colors.grey,
                                   ),
@@ -121,7 +126,7 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                         )
                       ],
                     ),
-                    if (Allproducts[index].discount != 0)
+                    if (Allproducts.discount != 0)
                       Container(
                         color: primarycolor,
                         child: Padding(
@@ -142,7 +147,7 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                 child: Column(
                   children: [
                     Text(
-                      '${Allproducts[index].name}',
+                      '${Allproducts.name}',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -151,7 +156,7 @@ Container ProductItem(List<Products> Allproducts, int index, context) {
                       children: [
                         Text('EGP'),
                         Text(
-                          '${Allproducts[index].price.toString()}',
+                          '${Allproducts.price.toString()}',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),

@@ -1,4 +1,4 @@
-import 'package:SHOPPING/features/Home/cubit/home_cubit.dart';
+import 'package:SHOPPING/features/Home/presentation/cubit/home_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 

@@ -10,6 +10,6 @@ SliverGrid buildproductsGrid({required List<Products> Allproducts,required conte
     childAspectRatio: 1 / 1.40,
     children: List.generate(
       Allproducts.length,
-      (index) => ProductItem(Allproducts, index, context)),
+      (index) => ProductItem(Allproducts[index], index, context)),
   );
 }

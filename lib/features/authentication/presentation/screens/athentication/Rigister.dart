@@ -1,8 +1,8 @@
 import 'package:SHOPPING/core/widgets/custoumTextformfild.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:SHOPPING/features/authentication/cubits/auth_cubit.dart';
-import 'package:SHOPPING/features/authentication/cubits/auth_states.dart';
+import 'package:SHOPPING/features/authentication/presentation/cubits/auth_cubit.dart';
+import 'package:SHOPPING/features/authentication/presentation/cubits/auth_states.dart';
 import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';

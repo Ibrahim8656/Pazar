@@ -1,6 +1,6 @@
 
-import 'package:SHOPPING/features/categories/cubit/categories_cubit.dart';
-import 'package:SHOPPING/features/categories/presentation/categorisdetailes_screen.dart';
+import 'package:SHOPPING/features/categories/presentation/cubit/categories_cubit.dart';
+import 'package:SHOPPING/features/categories/presentation/screens/categorisdetailes_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 

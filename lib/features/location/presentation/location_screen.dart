@@ -1,5 +1,5 @@
-import 'package:SHOPPING/features/Cart/presentation/cart_Screen.dart';
-import 'package:SHOPPING/features/Home/presentation/home_layout.dart';
+import 'package:SHOPPING/features/Cart/presentation/screens/cart_Screen.dart';
+import 'package:SHOPPING/features/Home/presentation/screens/home_layout.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

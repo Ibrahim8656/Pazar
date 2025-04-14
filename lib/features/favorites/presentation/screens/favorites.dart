@@ -1,6 +1,7 @@
 
+
 import 'package:SHOPPING/core/widgets/FavoriteItem.dart';
-import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
+import 'package:SHOPPING/features/favorites/presentation/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';

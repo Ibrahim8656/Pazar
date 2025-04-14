@@ -4,9 +4,9 @@ import 'package:SHOPPING/core/widgets/custoumTextformfild.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:SHOPPING/core/Helpers/shearedprefrences/shearedPrefrences.dart';
-import 'package:SHOPPING/features/Home/presentation/home_layout.dart';
-import 'package:SHOPPING/features/authentication/cubits/auth_cubit.dart';
-import 'package:SHOPPING/features/authentication/cubits/auth_states.dart';
+import 'package:SHOPPING/features/Home/presentation/screens/home_layout.dart';
+import 'package:SHOPPING/features/authentication/presentation/cubits/auth_cubit.dart';
+import 'package:SHOPPING/features/authentication/presentation/cubits/auth_states.dart';
 import 'package:SHOPPING/features/authentication/presentation/screens/athentication/Rigister.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 context: context,
                 message: state.Response.message!,
                 color: Colors.green);
-            CashHelper.SaveData("token", state.Response.data!.token);
+            CashHelper.SaveData("is_logedin", true);
           }
         }
         if (state is LoginwthierrorState) {

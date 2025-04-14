@@ -1,6 +1,6 @@
 import 'package:SHOPPING/core/models/Homemodel.dart';
-import 'package:SHOPPING/features/Home/presentation/Search_Screen.dart';
-import 'package:SHOPPING/features/favorites/cubit/favorites_cubit.dart';
+import 'package:SHOPPING/features/Home/presentation/screens/Search_Screen.dart';
+import 'package:SHOPPING/features/favorites/presentation/cubit/favorites_cubit.dart';
 import 'package:SHOPPING/features/favorites/presentation/screens/favorites.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';

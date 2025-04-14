@@ -1,7 +1,7 @@
 import 'package:SHOPPING/core/methods/showsnackbaar.dart';
-import 'package:SHOPPING/features/Checkout/cubit/checkout_cubit.dart';
+import 'package:SHOPPING/features/Checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:SHOPPING/features/Checkout/data/Stripe_models/payment_intent_input_model.dart';
-import 'package:SHOPPING/features/Checkout/presentation/successscreen.dart';
+import 'package:SHOPPING/features/Checkout/presentation/screens/successscreen.dart';
 import 'package:SHOPPING/utils/decorations/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

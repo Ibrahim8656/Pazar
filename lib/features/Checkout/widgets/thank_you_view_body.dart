@@ -1,6 +1,6 @@
 
 
-import 'package:SHOPPING/features/Checkout/presentation/thanks_view.dart';
+import 'package:SHOPPING/features/Checkout/presentation/screens/thanks_view.dart';
 import 'package:SHOPPING/features/Checkout/widgets/custom_check_icon.dart';
 import 'package:SHOPPING/features/Checkout/widgets/custom_dashed_line.dart';
 import 'package:flutter/material.dart';
